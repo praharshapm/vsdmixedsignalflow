@@ -14,5 +14,12 @@ This project describes an analog IP needs to be modified in order to be recognis
  - Obtaining IP
  - Limitations of current IP designs
  - Resolving pin issue
+ - Some pointers for top level verilog
  - Experiments with Qflow
+    - setting up the directories
+    - modifications for hard macro
+    - running qflow
+    - placement
+  - Future work
+  - Contact Information
 
