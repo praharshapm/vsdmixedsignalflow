@@ -3,7 +3,7 @@ This project describes an analog IP needs to be modified in order to be recognis
 
 # Table of Contents
 
-- Mixed Signal SoC
+- [Mixed Signal SoC](#mixed-signal-soc)
 - RTL2GDS flow of mixed signal SoC
 - The OpenROAD Project
 - OpenROAD tools installation
@@ -23,3 +23,4 @@ This project describes an analog IP needs to be modified in order to be recognis
   - Future work
   - Contact Information
 
+# Mixed Signal SoC
