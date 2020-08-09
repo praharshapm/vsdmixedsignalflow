@@ -6,7 +6,7 @@ This project describes how the physical design of a mixed signal SoC is carried 
 - Mixed Signal SoC
 - RTL2GDS flow of mixed signal SoC
 - The OpenROAD Project
-- OprnROAD tools installation
+- OpenROAD tools installation
 - Inputs required for physical design
   - LIB
   - LEF
