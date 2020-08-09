@@ -1,5 +1,5 @@
 # OpenROAD RTL2GDS flow for Mixed Signal SoC
-This project describes how the physical design of a mixed signal SoC is carried out using OpenROAD tools 
+This project describes an analog IP needs to be modified in order to be recognised by placement and routing tools and how the physical design is carried out.
 
 # Table of Contents
 
