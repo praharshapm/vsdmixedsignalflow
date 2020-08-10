@@ -4,8 +4,8 @@ This project describes an analog IP needs to be modified in order to be recognis
 # Table of Contents
 
 - [Mixed Signal SoC](#mixed-signal-soc)
-- RTL2GDS flow of mixed signal SoC
-- The OpenROAD Project
+- [RTL2GDS flow of mixed signal SoC](#rtl2gds-flow-of-mixed-signal-soc)
+- [The OpenROAD Project](the-openroad-project)
 - OpenROAD tools installation
 - Inputs required for physical design
   - LIB
@@ -36,3 +36,20 @@ To implement a RTL-to-GDS flow for mixed signal SoC, there is need to establish 
 In order to carry out this task, OpenROAD project can be utilized. OpenROAD, is a ‘no human in loop’ hardware compiler which translates source code (RTL) to layouts (GDS). The time required for the translation is less than 24 hours. It is a DARPA initiative, an open source project. RTL2GDS flow of OpenROAD is used only for digital SoC. Hence, with OpenROAD, we can establish digital as our top level hierarchy
 
 For more details visit [The OpenROAD Project](https://github.com/The-OpenROAD-Project)
+
+# OpenROAD tools installation
+
+For detailed installation steps, go to 
+
+# Inputs required for physical design
+
+The main inputs required to carry out RTL2GDS flow are:
+- LIB file
+- LEF file
+- top level verilog file
+
+# Obtaining IP
+The IP can be used from VLSI system website: [VLSI System Design](https://www.vlsisystemdesign.com/ip/)
+
+# Obtaining verilog files
+The 
