@@ -18,7 +18,7 @@ This project describes how the synthesis and placement of an analog IP, 2:1 anal
 - [Writing LIB file](#writing-lib-file)
 - [Top level verilog file](#top-level-verilog-file)
 - [Experiments with Qflow](#experiments-with-qflow)
-    - [setting up the directories using hard macro](#setting-up-the-directories-using-hard-macro)
+    - [setting up directories for using hard macro](#setting-up-directories-for-using-hard-macro)
     - [Running sythesis for analog multiplexer](#running-synthesis-for-analog-multiplexer)
     - [Running placement for analog multiplexer](#running-placement-for-analog-multiplexer)
 - [Future Work](#future-work)
@@ -97,7 +97,7 @@ On observing the layout from the layout window, we can see that the pins are not
 This incomplete LEF file would not be accepted by the PnR tools.
 
 # Resolving the pin issue
-To convert the labels into pins, a command called `port` can be used.
+To convert the labels into pins, a command called `port` can be used in magic.
 
 ## For the labels on metal layers:
 - Select the area under which the label is present. 
@@ -130,7 +130,7 @@ To convert the labels into pins, a command called `port` can be used.
   ```
 - Connect a `polycontact` layer on the `polysilicon` on one side
 - To the `polycontact`, connect a `metal1` layer . 
-- Overlap the `metal1` layer with 'm1p.
+- Overlap the `metal1` layer with `m1p`.
 - Remove DRC errors if any.
 - Create a label on `metal1` layer , by selecting a point on the layer and in tkcon window, typing
   ```javascript 
@@ -161,7 +161,7 @@ Therefore, change the pin names in the verilog file accordingly and then obtain 
 perl verilog_to_lib.pl AMUX2_3V AMUX2_3V
 ```
 
-The modified verilog file and the LIB file can be seen `/LIB` directory. 
+The modified verilog file and the LIB file can be seen in `/verilog` and `/LIB` directory. 
 
 # Top level verilog file
 This verilog file contains only instantiations of the macro. The file can be viewed in `/verilog` directory. 
@@ -179,7 +179,8 @@ The hard macros are intended to be local to the project (although they may be el
   	- source                       
 		- AMUX2_3V_top.v 
 		- AMUX2_3V                                							
-        		- AMUX2_3V.lib                                					
+        		
+			- AMUX2_3V.lib                                					
         		- AMUX2_3V.lef 
 
 
@@ -193,7 +194,7 @@ On running the above command, a file called `project_vars.sh` will be created. I
 <img align="center" width="500"  src="/images/project_vars.png">
 
 ## Running sythesis for analog multiplexer
-Run the following script
+To run synthesis,
 ```javascript 
   qflow synthesize -T osu018 AMUX2_3V_top.v
 ```
