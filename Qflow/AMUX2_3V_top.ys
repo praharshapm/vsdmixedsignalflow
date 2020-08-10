@@ -1,0 +1,25 @@
+# Synthesis script for yosys created by qflow
+read_liberty -lib -ignore_miss_dir -setattr blackbox /usr/local/share/qflow/tech/osu018/osu018_stdcells.lib
+read_liberty -lib -ignore_miss_dir -setattr blackbox /home/praharsha/pnr_test/source/AMUX2_3V/AMUX2_3V.lib
+read_verilog  /home/praharsha/pnr_test/source/AMUX2_3V_top.v
+
+# High-level synthesis
+synth -top AMUX2_3V_top
+# Map register flops
+dfflibmap -liberty /usr/local/share/qflow/tech/osu018/osu018_stdcells.lib
+opt
+
+# Map combinatorial cells, standard script
+abc -exe /usr/local/share/qflow/bin/yosys-abc -liberty /usr/local/share/qflow/tech/osu018/osu018_stdcells.lib -script +strash;scorr;ifraig;retime,{D};strash;dch,-f;map,-M,1,{D}
+flatten
+setundef -zero
+
+clean -purge
+# Output buffering
+iopadmap -outpad BUFX2 A:Y -bits
+# Cleanup
+opt
+clean
+rename -enumerate
+write_blif  -buf BUFX2 A Y AMUX2_3V_top_mapped.blif
+stat
