@@ -10,8 +10,8 @@ This project describes how the synthesis and placement of an analog IP, 2:1 anal
 - [Inputs required for physical design](#inputs-required-for-physical-design)
 - [Obtaining IP](#obtaining-ip)
 - [Obtaining verilog files](#obtaining-verilog-files)
-- [Getting LEF files](#getting-lef-files)
-- [Limitations of current IP designs](#limitations-of-current-ip-designs)
+- [Getting LEF file](#getting-lef-file)
+- [Limitations of current IP layouts](#limitations-of-current-ip-layouts)
 - [Resolving the pin issue](#resolving-the-pin-issue)
 	- [For the labels on metal layers:](#for-the-labels-on-metal-layers)
 	- [For the labels on polysilicon layers:](#for-the-labels-on-polysilicon-layers) 
@@ -82,7 +82,7 @@ From the terminal type the following :
 cd avsdmux2x1_3v3/Layout
 magic -T osu018 21muxlayout.mag
 ```
-<img align="center" width="500"  src="/LEF/21muxlayout.png">
+<img align="center" width="500"  src="/images/21muxlayout.png">
 
 A layout window and a tkcon window will open. In the tkcon window, type the following command to dump out the LEF file
 
@@ -143,7 +143,7 @@ Now, dump out the LEF file again by using
 ```javascript 
 lef write AMUX2_3V.lef
 ```
-All the pins and their descriptions can noe be seen.
+All the pins and their descriptions can now be seen.
 
 A section called `OBS` must also be seen at the end of the file. If it is not visible, it means that the label on polysilicon is not converted into port properly.
 
@@ -158,7 +158,7 @@ Therefore, change the pin names in the verilog file accordingly and then obtain 
 
 The modified verilog file and the LIB file can be seen `/LIB` directory. 
 
-# top level verilog file
+# Top level verilog file
 This verilog file contains only instantiations of the macro. The file can be viewed in `/verilog` directory. 
 
 # Experiments with Qflow
