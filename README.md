@@ -60,7 +60,7 @@ To clone the repository type the following from terminal:
 git clone https://github.com/prithivjp/avsdmux2x1_3v3.git
 ```
 
-<img align="center" width="500"  src="/images/amux.JPG">
+<img align="center" width="500"  src="/LEF/AMUX2_3V.png">
 
 # Obtaining verilog files
 The verilog file for analog multiplexer can be procured from [Efabless PicoRV-32 Github page](https://github.com/efabless/raven-picorv32/blob/master/verilog/AMUX2_3V.v)
@@ -69,7 +69,7 @@ To get the repository:
 ```javascript 
 git clone https://github.com/efabless/raven-picorv32.git
 ```
-
+<img align="center" width="500"  src="/images/amux.JPG">
 # Getting LEF file
 The LEF file can be obtained from magic layout synthesis tool from mag file as the input. 
 The steps to install on centOS 7 machine can be seen in
