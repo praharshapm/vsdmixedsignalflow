@@ -218,7 +218,7 @@ In case of any errors,
 check the log file. If the synthesis ran correctly and the `AMUX2_3V.lef` file is correct, then placement should run successfully.
 The graywolf window must open when running placement. If it runs correctly, then it should window should be as shown in the figure below.
 
-<img align="center" width="500"  src="/images/selecting%20VDD.png">
+<img align="center" width="500"  src="/images/placement.png">
 
 # Future Work
 To obtain complete RTL2GDS flow for mixed signal SoC on OpenROAD using sky130 PDK.
