@@ -143,5 +143,21 @@ The modified verilog file and the LIB file can be seen
 # top level verilog file
 This verilog file contains only instantiations of the macro. The file can be viewed in 
 
+# Experiments with Qflow
+OpenROAD does not support OSU018 technology node. Therefore, the placement is done using Qflow.
+Qflow can be installed by taking help of the following repository: [VSDFLOW](https://github.com/kunalg123/vsdflow.git)
+The tutorial for the same is available  as a free course on [Udemy](https://www.udemy.com/course/vsd-a-complete-guide-to-install-open-source-eda-tools/
 
+## Setting up directories for using hard macro
+The hard macros are intended to be local to the project (although they may be elsewhere and pointed to with symbolic links). Each hard macro should be a subdirectory of "source".
+"<hard_macro_dir>" could be a symbolic link to a place where you keep hard macros, if you expect them to be general-purpose macros used for  more than one project.
+  
+  <project>               
+		 source                       
+			<hard_macro_name>.v 
+			<hard_macro_dir>                                							
+        <hard_macro_name>.lib                                					
+        <hard_macro_name>.lef 
+
+Run the qflow
 
