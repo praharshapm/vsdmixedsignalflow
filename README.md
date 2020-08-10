@@ -152,12 +152,33 @@ The tutorial for the same is available  as a free course on [Udemy](https://www.
 The hard macros are intended to be local to the project (although they may be elsewhere and pointed to with symbolic links). Each hard macro should be a subdirectory of "source".
 "<hard_macro_dir>" could be a symbolic link to a place where you keep hard macros, if you expect them to be general-purpose macros used for  more than one project.
   
-  <project>               
-		 source                       
-			<hard_macro_name>.v 
-			<hard_macro_dir>                                							
-        <hard_macro_name>.lib                                					
-        <hard_macro_name>.lef 
+  design1              
+	 source                       
+		AMUX2_3V_top.v 
+		AMUX2_3V                                							
+        		AMUX2_3V.lib                                					
+        		AMUX2_3V.lef 
 
-Run the qflow
+
+Run the qflow:
+```javascript 
+  cd design1
+  qflow -T osu018 AMUX2_3V_top.v
+```
+On running the above command, a file called `project_vars.sh` will be created. In that file, fill the options as shown below
+
+## Running sythesis for analog multiplexer
+Run the following script
+```javascript 
+  qflow synthesize -T osu018 AMUX2_3V_top.v
+```
+If the synthesis ran successfully, then `AMUX2_3V.ys` and `AMUX2_3V.blif` files will be generated.
+
+In case of any errors,
+```javascript 
+  cd Logs
+  gedit synth.log
+```
+Check the errors in the log file. If AMUX2_3V_top.v and AMUX2_3V.lib are correct, then the synth should run successfully. 
+In the 
 
