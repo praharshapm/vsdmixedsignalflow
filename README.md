@@ -75,7 +75,8 @@ git clone https://github.com/efabless/raven-picorv32.git
 The LEF file can be obtained from magic layout synthesis tool from mag file . 
 
 
-The IP uses OSU018 as the technology node. So it is essential that the tech file for OSU018 is downloaded in the machine. The tech file is present in this repository as `osu018.tech` 
+The IP uses OSU018 as the technology node. So it is essential that the tech file for OSU018 is downloaded in the machine. The tech file is present in this repository as `osu018.tech` .
+
 From the terminal type the following :
 
 ```javascript 
@@ -135,7 +136,7 @@ To convert the labels into pins, a command called `port` can be used.
   ```javascript 
   label 'name_of_label'
   ```
-  - Continue the same process for turning a label into port as mentioned above.
+- Continue the same process for turning a label into port as mentioned above.
 
 <img align="center" width="500"  src="/images/select%20pin.png">
 
@@ -154,7 +155,11 @@ LIB file can be got by using a perl script, which converts verilog file to LIB f
 To view the script, go to `verilog_to_lib.pl`
 
 The verilog file is obtained from the efabless github page. But, the names of the pins defined in the verilog file and the layout and LEF file obtained above may be different. 
-Therefore, change the pin names in the verilog file accordingly and then obtain the LIB file by using the perl script. 
+Therefore, change the pin names in the verilog file accordingly and then obtain the LIB file by using the perl script by typing the following on terminal
+
+```javascript 
+perl verilog_to_lib.pl AMUX2_3V AMUX2_3V
+```
 
 The modified verilog file and the LIB file can be seen `/LIB` directory. 
 
