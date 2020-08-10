@@ -1,5 +1,5 @@
 # OpenROAD RTL2GDS flow for Mixed Signal SoC
-This project describes an analog IP, 2:1 analog multiplexer, needs to be modified in order to be recognised by placement and routing tools and how the physical design is carried out.
+This project describes how the synthesis and placement of an analog IP, 2:1 analog multiplexer is carried out by opensource EDA tools.It also discusses the steps to modify the current IP layouts inorder to ensure its acceptance by the EDA tools. 
 
 # Table of Contents
 
@@ -42,7 +42,7 @@ For more details visit [The OpenROAD Project](https://github.com/The-OpenROAD-Pr
 
 # OpenROAD tools installation
 
-For detailed installation steps, go to 
+For detailed installation steps, go to `Steps to install OpenROAD tools.pdf`
 
 # Inputs required for physical design
 
@@ -71,9 +71,9 @@ git clone https://github.com/efabless/raven-picorv32.git
 <img align="center" width="500"  src="/images/amux.JPG">
 # Getting LEF file
 The LEF file can be obtained from magic layout synthesis tool from mag file as the input. 
-The steps to install on centOS 7 machine can be seen in
 
-The IP uses OSU018 as the technology node. So it is essential that the tech file for OSU018 is downloaded in the machine. the tech file is present in this repository. 
+
+The IP uses OSU018 as the technology node. So it is essential that the tech file for OSU018 is downloaded in the machine. the tech file is present in this repository as `osu018.tech` 
 ```javascript 
 git clone https://github.com/prithivjp/avsdmux2x1_3v3.git
 ```
@@ -98,7 +98,7 @@ On observing the layout from the layout window, we can see that the pins are not
 This incomplete LEF file would not be accepted by the PnR tools.
 
 # Resolving the pin issue
-To convert the labels into pins, a command called 'port' can be used.
+To convert the labels into pins, a command called `port` can be used.
 
 ## For the labels on metal layers:
 - Select the area under which the label is present. 
@@ -152,15 +152,15 @@ In the LEF file, we can observe that the name of macro is 21muxlayout. This is b
 
 # Writing LIB file
 LIB file can be got by using a perl script, which converts verilog file to LIB file. 
-To view the script
+To view the script, go to `verilog_to_lib.pl`
 
 The verilog file is obtained from the efabless github page. But, the names of the pins defined in the verilog file and the layout and LEF file obtained above may be different. 
 Therefore, change the pin names in the verilog file accordingly and then obtain the LIB file by using the perl script. 
 
-The modified verilog file and the LIB file can be seen
+The modified verilog file and the LIB file can be seen `/LIB` directory. 
 
 # top level verilog file
-This verilog file contains only instantiations of the macro. The file can be viewed in 
+This verilog file contains only instantiations of the macro. The file can be viewed in `/verilog` directory. 
 
 # Experiments with Qflow
 OpenROAD does not support OSU018 technology node. Therefore, the placement is done using Qflow.
@@ -169,14 +169,14 @@ The tutorial for the same is available  as a free course on [Udemy](https://www.
 
 ## Setting up directories for using hard macro
 The hard macros are intended to be local to the project (although they may be elsewhere and pointed to with symbolic links). Each hard macro should be a subdirectory of "source".
-"<hard_macro_dir>" could be a symbolic link to a place where you keep hard macros, if you expect them to be general-purpose macros used for  more than one project.
+"<hard_macro_dir>" could be a symbolic link to a place where you keep hard macros, if you expect them to be general-purpose macros used for more than one project.
   
-  design1              
-	 source                       
-		AMUX2_3V_top.v 
-		AMUX2_3V                                							
-        		AMUX2_3V.lib                                					
-        		AMUX2_3V.lef 
+  - design1              
+  	- source                       
+		- AMUX2_3V_top.v 
+		- AMUX2_3V                                							
+        		- AMUX2_3V.lib                                					
+        		- AMUX2_3V.lef 
 
 
 Run the qflow:
@@ -211,14 +211,14 @@ To run the placement,
 ```
 In case of any errors,
 ```javascript 
-  cd Logs
+  cd logs
   gedit place.log
   cd ../
 ```
 check the log file. If the synthesis ran correctly and the `AMUX2_3V.lef` file is correct, then placement should run successfully.
 The graywolf window must open when running placement. If it runs correctly, then it should window should be as shown in the figure below.
 
-<img align="center" width="500"  src="/images/placement.png">
+<img align="center" width="500"  src="/images/placement.JPG">
 
 # Future Work
 To obtain complete RTL2GDS flow for mixed signal SoC on OpenROAD using sky130 PDK.
