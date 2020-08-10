@@ -82,7 +82,7 @@ From the terminal type the following :
 cd avsdmux2x1_3v3/Layout
 magic -T osu018 21muxlayout.mag
 ```
-<img align="center" width="500"  src="/LEF/AMUX2_3V.png">
+<img align="center" width="500"  src="/LEF/21muxlayout.png">
 
 A layout window and a tkcon window will open. In the tkcon window, type the following command to dump out the LEF file
 
@@ -115,12 +115,13 @@ To convert the labels into pins, a command called `port` can be used.
 
 - Similarly, carry out the same process for other labels
 
-<img align="center" width="500"  src="/images/selecting%20VDD.png">
+<img align="center" width="500"  src="/images/tkcon%20window.png">
 
 ## For the labels on polysilicon layers:
 
 
 <img align="center" width="500"  src="/images/polysilicon.png">
+
 - Type `g` to enable the grid option
 - delete the label on `polysilicon` layer by selecting the area where label is present and typing the following in tkcon window
    ```javascript 
