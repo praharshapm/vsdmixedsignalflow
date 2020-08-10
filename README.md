@@ -193,7 +193,7 @@ On running the above command, a file called `project_vars.sh` will be created. I
 
 <img align="center" width="500"  src="/images/project_vars.png">
 
-## Running sythesis for analog multiplexer
+## Running synthesis for analog multiplexer
 To run synthesis,
 ```javascript 
   qflow synthesize -T osu018 AMUX2_3V_top.v
