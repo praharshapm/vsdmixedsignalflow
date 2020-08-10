@@ -6,22 +6,25 @@ This project describes an analog IP, 2:1 analog multiplexer, needs to be modifie
 - [Mixed Signal SoC](#mixed-signal-soc)
 - [RTL2GDS flow of mixed signal SoC](#rtl2gds-flow-of-mixed-signal-soc)
 - [The OpenROAD Project](the-openroad-project)
-- OpenROAD tools installation
-- Inputs required for physical design
-  - LIB
-  - LEF
-  - top level verilog file
- - Obtaining IP
- - Limitations of current IP designs
- - Resolving pin issue
- - Some pointers for top level verilog
- - Experiments with Qflow
-    - setting up the directories
-    - modifications for hard macro
-    - running qflow
-    - placement
-  - Future work
-  - Contact Information
+- [OpenROAD tools installation](openroad-tools-installation)
+- [Inputs required for physical design](inputs-required-for-physical-design)
+- [Obtaining IP](obtaining-ip)
+- [Obtaining verilog files](obtaining-verilog-files)
+- [Getting LEF files](getting-lef-files)
+- [Limitations of current IP designs](limitations-of-current-ip-designs)
+- [Resolving the pin issue](resolving-the-pin-issue)
+	-For the labels on metal layers:
+	-For the labels on polysilicon layers: 
+- [Writing LIB file](writing-lib-file)
+- [Top level verilog file](top-level-verilog-file)
+- [Experiments with Qflow](experiments-with-qflow)
+    - [setting up the directories using hard macro](setting-up-the-directories-using-hard-macro)
+    - [Running sythesis for analog multiplexer](running-synthesis-for-analog-multiplexer)
+    - [Running placement for analog multiplexer](running-placement-for-analog-multiplexer)
+- [Future Work](future-work)
+- [Contact Information](contact-information)
+- [References](references)
+   
 
 # Mixed Signal SoC
 
@@ -203,3 +206,6 @@ To obtain complete RTL2GDS flow for mixed signal SoC on OpenROAD using sky130 PD
 # Contact Information
 - Praharsha Mahurkar, BE Electronics and Telecommunication, Maharashtra Institute of Technology, Pune, 	praharshapm@gmail.com
 - Kunal Ghosh Director, VSD Corp. Pvt. Ltd. kunalpghosh@gmail.com
+
+# References
+- Sini Mukundan
