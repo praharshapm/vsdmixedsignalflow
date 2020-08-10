@@ -111,11 +111,11 @@ To convert the labels into pins, a command called 'port' can be used.
    ```javascript 
   erase labels
   ```
-- Connect a 'polycontact' layer on the 'polysilicon' on one side
-- To the 'polycontact', connect a 'metal1' layer . 
-- Overlap the 'metal1' layer with 'm1p.
+- Connect a `polycontact` layer on the `polysilicon` on one side
+- To the `polycontact`, connect a `metal1` layer . 
+- Overlap the `metal1` layer with 'm1p.
 - Remove DRC errors if any.
-- Create a label on 'metal1' layer , by selecting a point on the layer and in tkcon window, typing
+- Create a label on `metal1` layer , by selecting a point on the layer and in tkcon window, typing
   ```javascript 
   label 'name_of_label'
   ```
@@ -129,7 +129,7 @@ All the pins and their descriptions can noe be seen.
 
 A section called OBS must also be seen at the end of the file. If it is not visible, it means that the label on polysilicon is not converted into port properly.
 
-In the LEF file, we can observe that the name of macro is 21muxlayout. This is because the name of the layout file was 21muxlayout. For our flow, we have defined the name of the macro as AMUX2_3V. Therefore, we have to rename the layout file as AMUX2_3V and dump out the file again.
+In the LEF file, we can observe that the name of macro is 21muxlayout. This is because the name of the layout file was 21muxlayout. For our flow, we have defined the name of the macro as `AMUX2_3V`. Therefore, we have to rename the layout file as `AMUX2_3V` and dump out the file again.
 
 # Writing LIB file
 LIB file can be got by using a perl script, which converts verilog file to LIB file. 
@@ -146,7 +146,7 @@ This verilog file contains only instantiations of the macro. The file can be vie
 # Experiments with Qflow
 OpenROAD does not support OSU018 technology node. Therefore, the placement is done using Qflow.
 Qflow can be installed by taking help of the following repository: [VSDFLOW](https://github.com/kunalg123/vsdflow.git)
-The tutorial for the same is available  as a free course on [Udemy](https://www.udemy.com/course/vsd-a-complete-guide-to-install-open-source-eda-tools/
+The tutorial for the same is available  as a free course on [Udemy](https://www.udemy.com/course/vsd-a-complete-guide-to-install-open-source-eda-tools/)
 
 ## Setting up directories for using hard macro
 The hard macros are intended to be local to the project (although they may be elsewhere and pointed to with symbolic links). Each hard macro should be a subdirectory of "source".
@@ -178,7 +178,28 @@ In case of any errors,
 ```javascript 
   cd Logs
   gedit synth.log
+  cd ../
 ```
-Check the errors in the log file. If AMUX2_3V_top.v and AMUX2_3V.lib are correct, then the synth should run successfully. 
-In the 
+Check the errors in the log file. If `AMUX2_3V_top.v` and `AMUX2_3V.lib` are correct, then the synth should run successfully. 
+In the `AMUX2_3V.ys` file, liberty files must be read and `AMUX2_3V` must be considered as a macro and not as a module.
 
+## Running placement for analog multiplexer
+To run the placement,
+```javascript 
+  qflow placement -T osu018 AMUX2_3V_top.v
+```
+In case of any errors,
+```javascript 
+  cd Logs
+  gedit place.log
+  cd ../
+```
+check the log file. If the synthesis ran correctly and the `AMUX2_3V.lef` file is correct, then placement should run successfully.
+The graywolf window must open when running placement. If it runs correctly, then it should window should be as shown in the figure below.
+
+# Future Work
+To obtain complete RTL2GDS flow for mixed signal SoC on OpenROAD using sky130 PDK.
+
+# Contact Information
+- Praharsha Mahurkar, BE Electronics and Telecommunication, Maharashtra Institute of Technology, Pune, 	praharshapm@gmail.com
+- Kunal Ghosh Director, VSD Corp. Pvt. Ltd. kunalpghosh@gmail.com
