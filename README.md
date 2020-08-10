@@ -59,6 +59,7 @@ To clone the repository type the following from terminal:
 ```javascript 
 git clone https://github.com/prithivjp/avsdmux2x1_3v3.git
 ```
+![](./images/amux.JPG )
 
 # Obtaining verilog files
 The verilog file for analog multiplexer can be procured from [Efabless PicoRV-32 Github page](https://github.com/efabless/raven-picorv32/blob/master/verilog/AMUX2_3V.v)
