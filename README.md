@@ -234,4 +234,4 @@ To obtain complete RTL2GDS flow for mixed signal SoC on OpenROAD using sky130 PD
 - Kunal Ghosh Director, VSD Corp. Pvt. Ltd. kunalpghosh@gmail.com
 
 # References
-- Sini Mukundan
+- Sini Mukundan, Creating .lib file from verilog
