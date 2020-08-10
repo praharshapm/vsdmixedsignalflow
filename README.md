@@ -13,8 +13,8 @@ This project describes how the synthesis and placement of an analog IP, 2:1 anal
 - [Getting LEF files](#getting-lef-files)
 - [Limitations of current IP designs](#limitations-of-current-ip-designs)
 - [Resolving the pin issue](#resolving-the-pin-issue)
-	-[For the labels on metal layers:](#for-the-labels-on-metal-layers)
-	-[For the labels on polysilicon layers:](#for-the-labels-on-polysilicon-layers) 
+	- [For the labels on metal layers:](#for-the-labels-on-metal-layers)
+	- [For the labels on polysilicon layers:](#for-the-labels-on-polysilicon-layers) 
 - [Writing LIB file](#writing-lib-file)
 - [Top level verilog file](#top-level-verilog-file)
 - [Experiments with Qflow](#experiments-with-qflow)
@@ -72,14 +72,10 @@ git clone https://github.com/efabless/raven-picorv32.git
 
 # Getting LEF file
 
-The LEF file can be obtained from magic layout synthesis tool from mag file as the input. 
+The LEF file can be obtained from magic layout synthesis tool from mag file . 
 
 
-The IP uses OSU018 as the technology node. So it is essential that the tech file for OSU018 is downloaded in the machine. the tech file is present in this repository as `osu018.tech` 
-```javascript 
-git clone https://github.com/prithivjp/avsdmux2x1_3v3.git
-```
-
+The IP uses OSU018 as the technology node. So it is essential that the tech file for OSU018 is downloaded in the machine. The tech file is present in this repository as `osu018.tech` 
 From the terminal type the following :
 
 ```javascript 
