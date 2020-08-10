@@ -201,7 +201,7 @@ If the synthesis ran successfully, then `AMUX2_3V.ys` and `AMUX2_3V.blif` files 
 
 In case of any errors,
 ```javascript 
-  cd Logs
+  cd logs
   gedit synth.log
   cd ../
 ```
@@ -220,7 +220,7 @@ In case of any errors,
   cd ../
 ```
 check the log file. If the synthesis ran correctly and the `AMUX2_3V.lef` file is correct, then placement should run successfully.
-The graywolf window must open when running placement. If it runs correctly, then it should window should be as shown in the figure below.
+The graywolf window must open when running placement. If it runs correctly, then the window should be as shown in the figure below.
 
 <img align="center" width="500"  src="/images/placement.JPG">
 
