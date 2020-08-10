@@ -60,7 +60,6 @@ To clone the repository type the following from terminal:
 git clone https://github.com/prithivjp/avsdmux2x1_3v3.git
 ```
 
-<img align="center" width="500"  src="/LEF/AMUX2_3V.png">
 
 # Obtaining verilog files
 The verilog file for analog multiplexer can be procured from [Efabless PicoRV-32 Github page](https://github.com/efabless/raven-picorv32/blob/master/verilog/AMUX2_3V.v)
@@ -85,11 +84,14 @@ From the terminal type the following :
 cd avsdmux2x1_3v3/Layout
 magic -T osu018 21muxlayout.mag
 ```
+<img align="center" width="500"  src="/LEF/AMUX2_3V.png">
+
 A layout window and a tkcon window will open. In the tkcon window, type the following command to dump out the LEF file
 
 ```javascript 
 lef write AMUX2_3V.lef
 ```
+
 # Limitations of current IP layouts
 On opening the LEF file, it is observed that it is incomplete. The file does not contain the pin descriptions. 
 On observing the layout from the layout window, we can see that the pins are not present. Only labels are present in the layout. And the magic tool is not able to identify these labels. 
@@ -100,6 +102,9 @@ To convert the labels into pins, a command called 'port' can be used.
 
 ## For the labels on metal layers:
 - Select the area under which the label is present. 
+
+<img align="center" width="500"  src="/images/selecting%20VDD.png">
+
 - In the tkcon window type 
   ```javascript 
   port make
@@ -108,11 +113,18 @@ To convert the labels into pins, a command called 'port' can be used.
     ```javascript 
     port name
     ```
+ <img align="center" width="500"  src="/images/port.png">   
+
 - Similarly, carry out the same process for other labels
 
+<img align="center" width="500"  src="/images/selecting%20VDD.png">
+
 ## For the labels on polysilicon layers:
-- Type 'g' to enable the grid option
-- delete the label on 'polysilicon' layer by selecting the area where label is present and typing the following in tkcon window
+
+
+<img align="center" width="500"  src="/images/polysilicon.png">
+- Type `g` to enable the grid option
+- delete the label on `polysilicon` layer by selecting the area where label is present and typing the following in tkcon window
    ```javascript 
   erase labels
   ```
@@ -124,7 +136,9 @@ To convert the labels into pins, a command called 'port' can be used.
   ```javascript 
   label 'name_of_label'
   ```
-- Continue the same process for turning a label into port as mentioned above.
+  - Continue the same process for turning a label into port as mentioned above.
+
+<img align="center" width="500"  src="/images/select%20pin.png">
 
 Now, dump out the LEF file again by using 
 ```javascript 
@@ -132,7 +146,7 @@ lef write AMUX2_3V.lef
 ```
 All the pins and their descriptions can noe be seen.
 
-A section called OBS must also be seen at the end of the file. If it is not visible, it means that the label on polysilicon is not converted into port properly.
+A section called `OBS` must also be seen at the end of the file. If it is not visible, it means that the label on polysilicon is not converted into port properly.
 
 In the LEF file, we can observe that the name of macro is 21muxlayout. This is because the name of the layout file was 21muxlayout. For our flow, we have defined the name of the macro as `AMUX2_3V`. Therefore, we have to rename the layout file as `AMUX2_3V` and dump out the file again.
 
@@ -172,6 +186,8 @@ Run the qflow:
 ```
 On running the above command, a file called `project_vars.sh` will be created. In that file, fill the options as shown below
 
+<img align="center" width="500"  src="/images/project_vars.png">
+
 ## Running sythesis for analog multiplexer
 Run the following script
 ```javascript 
@@ -201,6 +217,8 @@ In case of any errors,
 ```
 check the log file. If the synthesis ran correctly and the `AMUX2_3V.lef` file is correct, then placement should run successfully.
 The graywolf window must open when running placement. If it runs correctly, then it should window should be as shown in the figure below.
+
+<img align="center" width="500"  src="/images/selecting%20VDD.png">
 
 # Future Work
 To obtain complete RTL2GDS flow for mixed signal SoC on OpenROAD using sky130 PDK.
