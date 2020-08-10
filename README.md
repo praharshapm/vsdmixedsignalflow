@@ -181,7 +181,8 @@ The hard macros are intended to be local to the project (although they may be el
 		- AMUX2_3V                                							
         		
 			- AMUX2_3V.lib                                					
-        		- AMUX2_3V.lef 
+        		
+			- AMUX2_3V.lef 
 
 
 Run the qflow:
