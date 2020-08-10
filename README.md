@@ -1,5 +1,5 @@
 # OpenROAD RTL2GDS flow for Mixed Signal SoC
-This project describes how the synthesis and placement of an analog IP, 2:1 analog multiplexer is carried out by opensource EDA tools.It also discusses the steps to modify the current IP layouts inorder to ensure its acceptance by the EDA tools. 
+This project describes how the synthesis and placement of an analog IP, 2:1 analog multiplexer is carried out by opensource EDA tools. It also discusses the steps to modify the current IP layouts inorder to ensure its acceptance by the EDA tools. 
 
 # Table of Contents
 
@@ -81,7 +81,7 @@ From the terminal type the following :
 
 ```javascript 
 cd avsdmux2x1_3v3/Layout
-magic -T osu018 21muxlayout.mag
+magic -T osu018.tech 21muxlayout.mag
 ```
 <img align="center" width="500"  src="/images/21muxlayout.png">
 
