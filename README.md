@@ -42,7 +42,7 @@ For more details visit [The OpenROAD Project](https://github.com/The-OpenROAD-Pr
 
 # OpenROAD tools installation
 
-For detailed installation steps, go to `Steps to install OpenROAD tools.pdf`
+For detailed installation steps, go to [Steps to install OpenROAD tools.pdf](Steps%20to%20install%20OpenROAD%20tools.pdf)
 
 # Inputs required for physical design
 
@@ -75,7 +75,7 @@ git clone https://github.com/efabless/raven-picorv32.git
 The LEF file can be obtained from magic layout synthesis tool from mag file . 
 
 
-The IP uses OSU018 as the technology node. So it is essential that the tech file for OSU018 is downloaded in the machine. The tech file is present in this repository as `osu018.tech` .
+The IP uses OSU018 as the technology node. So it is essential that the tech file for OSU018 is downloaded in the machine. The tech file is present in this repository as [osu018.tech](osu018.tech).
 
 From the terminal type the following :
 
@@ -161,10 +161,10 @@ Therefore, change the pin names in the verilog file accordingly and then obtain 
 perl verilog_to_lib.pl AMUX2_3V AMUX2_3V
 ```
 
-The modified verilog file and the LIB file can be seen in `/verilog` and `/LIB` directory. 
+The modified verilog file and the LIB file can be viewed from [AMUX2_3V.v](AMUX2_3V.v) and [AMUX2_3V.lib](AMUX2_3V.lib) directory. 
 
 # Top level verilog file
-This verilog file contains only instantiations of the macro. The file can be viewed in `/verilog` directory. 
+This verilog file contains only instantiations of the macro. The file can be viewed in [AMUX2_3V_top.v](AMUX2_3V_top.v) directory. 
 
 # Experiments with Qflow
 OpenROAD does not support OSU018 technology node. Therefore, the placement is done using Qflow.
