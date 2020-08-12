@@ -28,7 +28,8 @@ This project describes how the synthesis and placement of an analog IP, 2:1 anal
 
 # Mixed Signal SoC
 
-Mixed signal SoC is a chip which contains both analog and digital blocks. The designers are adding more analog circuitry and increasing their complexities day by day. Not only that, they also contain digital control logic. Additionally, they also contain multiple feedback loops, which make the verification difficult. As the process nodes shrink, the demand for integration grows. For example, in home automation systems, it senses the surrounding atmosphere, like light, temperature etc. and converts these analog signals into digital for processing. A divide and conquer approach is followed, where the analog and digital structures were dealt with separately. Usually, an analog IP (Intellectual Property) is bought as black- box. It is then integrated with a mostly digital SoC. When analog and digital merge, then even the fastest circuit solvers become slow. The digital and analog IP blocks are at different levels of abstraction, which force mixed signal SoC design to take a hierarchical approach. 
+Mixed signal SoC is a chip which contains both analog and digital blocks. The designers are adding more analog circuitry and increasing their complexities day by day. Not only that, they also contain digital control logic. As the process nodes shrink, the demand for integration grows. A divide and conquer approach is followed, where the analog and digital structures were dealt with separately. Usually, an analog IP (Intellectual Property) is bought as black- box. 
+
 
 # RTL2GDS flow of mixed signal SoC
 
@@ -151,7 +152,7 @@ A section called `OBS` must also be seen at the end of the file. If it is not vi
 In the LEF file, we can observe that the name of macro is 21muxlayout. This is because the name of the layout file was 21muxlayout. For our flow, we have defined the name of the macro as `AMUX2_3V`. Therefore, we have to rename the layout file as `AMUX2_3V` and dump out the file again.
 
 # Writing LIB file
-LIB file can be got by using a perl script, which converts verilog file to LIB file. 
+LIB file can be got by using a perl script, which converts verilog file to LIB file. The script is taken from the website [VLSI Professional Network](https://vlsi.pro/creating-lib-file-from-verilog/). It is written by Ms Sini Mukundan.
 To view the script, go to `verilog_to_lib.pl`
 
 The verilog file is obtained from the efabless github page. But, the names of the pins defined in the verilog file and the layout and LEF file obtained above may be different. 
