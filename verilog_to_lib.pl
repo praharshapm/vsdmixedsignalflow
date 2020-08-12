@@ -1,3 +1,6 @@
+# This script is taken from 'VLSI Professional Network' website
+# This script is written by Sini Mukundan
+
 #!/usr/bin/perl
 
 use strict;
