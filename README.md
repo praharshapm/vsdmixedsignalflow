@@ -30,6 +30,8 @@ This project describes how the synthesis and placement of an analog IP, 2:1 anal
 
 Mixed signal SoC is a chip which contains both analog and digital blocks. The designers are adding more analog circuitry and increasing their complexities day by day. Not only that, they also contain digital control logic. As the process nodes shrink, the demand for integration grows. A divide and conquer approach is followed, where the analog and digital structures were dealt with separately. Usually, an analog IP (Intellectual Property) is bought as black- box. 
 
+<img align="center" width="500"  src="/images/mixed_signal_soc.JPG">
+
 
 # RTL2GDS flow of mixed signal SoC
 
