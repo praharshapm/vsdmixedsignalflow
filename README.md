@@ -229,6 +229,26 @@ The graywolf window must open when running placement. If it runs correctly, then
 
 <img align="center" width="500"  src="/images/placement.JPG">
 
+# Experiments with Openlane and sky130
+
+OpenLANE is an automated RTL to GDSII flow based on several components including OpenROAD, Yosys, Magic, Netgen, Fault and custom methodology scripts for design exploration and optimization.
+
+## Installation
+Openlane along with sky130 PDK can be downloaded and installed by following the steps in [this](https://github.com/nickson-jose/openlane_build_script) repository. 
+
+## Adding a new project 
+In the `designs` directory create a folder with the name of the project
+```javascript 
+  cd designs
+  mkdir design_mux
+```
+## setting up the new project
+To set-up the project, run the following on command line:
+```javascript 
+ ./flow.tcl -design <design_name> -init_design_config
+```
+This will create `config.tcl` file with default settings
+
 # Future Work
 To obtain complete RTL2GDS flow for mixed signal SoC on OpenROAD using sky130 PDK.
 
