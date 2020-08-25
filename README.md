@@ -253,8 +253,54 @@ The information about congiguration veriables can be found [here](https://github
 
 ## Adding input files
 
+### Verilog files
 The input files are to added under `~/designs/design_mux/src` directory. 
-The `src`  
+The `src`folder consists of verilog files for the design which may be found in the `verilog` section of this repository. 
+
+- `design_mux.v` is the name of the top level verilog file.
+- `AMUX2_3V.v` is the verilog file of the macro. 
+- `raven_spi.v` and `spi_slave.v` are the files to be included in the design.
+
+### LEFs
+LEF file can be obtained from the IP layouts using magic. 
+
+The labels can be converted to pins using the same method mentioned [here](#resolving-the-pin-issue)
+
+In addition to converting pins from labels, there are certain other lines included in the LEF file, such that it can be accepted by the openlane tool:
+- ` CLASS CORE`
+
+This line can be added using the following command in the tkcon window:
+```javascript 
+ property LEFclass CORE
+```
+- `ORIGIN 0.000 0.000``
+The layout must start from the origin (0,0). In order to get this:
+	- first find out the current co-ordinates of origin by:
+	select the whole layout and type the following in tkcon window
+	  ```javascript 
+		box
+	```
+	From this, llx and lly are X and Y co-ordinates respectively.
+	- setting X co-ordinate to 0:
+	```javascript 
+		move origin right `llx`
+	```
+	- setting Y co-ordinate to 0:
+	```javascript 
+		move origin bottom -`lly`
+	```
+	- checking if the origin has shifted to (0,0):
+	 first find out the current co-ordinates of origin by:
+	  ```javascript 
+		box
+	```
+	Now, the llx and lly should have the value of 0.
+- `SITE unithddbl`
+To set this, type the following from tkcon window:
+```javascript 
+ property LEFsite unithddbl
+```
+
 
 # Future Work
 To obtain complete RTL2GDS flow for mixed signal SoC on OpenROAD using sky130 PDK.
