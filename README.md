@@ -273,17 +273,19 @@ This line can be added using the following command in the tkcon window:
 ```javascript 
  property LEFclass CORE
 ```
-- `ORIGIN 0.000 0.000``
-The layout must start from the origin (0,0). In order to get this:
+- `ORIGIN 0.000 0.000`
+The layout must start from the origin (0,0). In order to get this : 
+
 	- first find out the current co-ordinates of origin by:
-	select the whole layout and type the following in tkcon window
+	selecting the whole layout and type the following in tkcon window
+	
 	  ```javascript 
 		box
 	```
 	From this, llx and lly are X and Y co-ordinates respectively.
 	- setting X co-ordinate to 0:
 	```javascript 
-		move origin right `llx`
+		move origin right 'llx'
 	```
 	- setting Y co-ordinate to 0:
 	```javascript 
@@ -300,7 +302,139 @@ To set this, type the following from tkcon window:
 ```javascript 
  property LEFsite unithddbl
 ```
+- `SIZE`
+The height of the macro must be either 2.72 um or 5.444 um in order to fit into the rails ( for fd_sc_hd) . In order to acheive this, first find the current height of the macro by selecting the entire macro and typing the following in tkcon window:
+```javascript 
+box
+```
+Then, find the value by which it should be scaled to get height=5.44 um.
+Save the magic file.
 
+Next, add the following in the .mag file:
+```javascript 
+magscale 1 2
+```
+Reload the file in magic. Check the height of the macro now by typing the following in tkcon window:
+```javascript 
+box
+```
+The height should be 5.44 um now. Remove the `magscale` line from .mag file and save the file.
+
+- `DIRECTION'
+Select the part which contains the pin and type the following in tkcon window:
+	- For Power and Ground pins:
+	 ```javascript 
+             port class inout
+          ```
+	 - For Input pins:
+	   ```javascript 
+             port class input
+          ```
+	  - For Output pins:
+	    ```javascript 
+             port class output
+          ```
+- `USE`
+Select the part which contains the pin and type the following in tkcon window:
+	- Power pin:
+	  ```javascript 
+             port use power
+          ```
+	- Ground pin:
+	  ```javascript 
+             port use ground
+          ```
+	- Other pins:
+	  ```javascript 
+             port use signal
+          ```
+	  
+Ultimately, after configuring all the lines for LEF, create a LEF file by typing the following in tkcon window:
+```javascript 
+lef write AMUX2_3V.lef
+```
+# The flow
+To harden a macro, the automated flow for Openlane cannot by used. Instead an interactive script should be used. 
+
+Go to the `~/openlane_working_dir/openlane` and execute the following:
+```javascript 
+export PDK_ROOT=<absolute path to where skywater-pdk and open_pdks reside>
+```
+```javascript 
+docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) openlane:rc2
+```
+A bash window will open. In the bash window, the interactive flow is executed. The commands to be executed are also present in a script [here]():
+## Setting up flow
+```javascript 
+package require openlane 0.9
+```
+```javascript 
+prep -design design_mux -overwrite
+```
+## The LEF file for macro must be added from the bash window
+```javascript 
+set lefs 	 [glob $::env(DESIGN_DIR)/src/lef/*.lef]
+```
+```javascript 
+add_lefs -src $lefs
+```
+## Synthesis
+```javascript 
+run_synthesis
+```
+## Floorplanning
+```javascript 
+init_floorplan_or
+```
+## IO Placement
+```javascript 
+place_io
+```
+## Placement
+```javascript 
+global_placement_or
+```
+```javascript 
+detailed_placement
+```
+```javascript 
+tap_decap_or
+```
+```javascript 
+detailed_placement
+```
+## Generation of Power Delivery Network(PDN)
+```javascript 
+gen_pdn
+```
+## Routing
+```javascript 
+run_routing
+```
+## DRC Cleaning
+```javascript 
+run_magic_drc
+```
+## Final Layout generation
+```javascript 
+run_magic
+```
+
+# Notes and Tips
+- You may have to update RePlace to the latest version if you wish to run placement for low instance count designs.
+- If, the error still persists in placement, check if following block of code in `~scripts/openroad/or_replace.tcl` is commented. If not, comment it. 
+```javascript 
+global_placement \
+ 	-density $::env(PL_TARGET_DENSITY) \
+ 	-verbose 3
+```
+- The verilog files must not contain the power and ground pins. 
+- Add the macro LEF both in the `config.tcl` file and in the interactive flow.
+
+
+
+
+	 
 
 # Future Work
 To obtain complete RTL2GDS flow for mixed signal SoC on OpenROAD using sky130 PDK.
