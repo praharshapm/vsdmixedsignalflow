@@ -245,11 +245,11 @@ In the `designs` directory create a folder with the name of the project
 ## setting up the new project
 To set-up the project, run the following on command line:
 ```javascript 
- ./flow.tcl -design <design_name> -init_design_config
+ ./flow.tcl -design design_mux -init_design_config
 ```
 This will create `config.tcl` file with default settings. The final `config.tcl` file can be seen from [here](). This file also contains the reasons for some configurations as comments.
 
-The information about congiguration veriables can be found [here](https://github.com/efabless/openlane/blob/master/configuration/README.md)
+The information about configuration veriables can be found [here](https://github.com/efabless/openlane/blob/master/configuration/README.md)
 
 ## Adding input files
 
@@ -322,7 +322,7 @@ box
 ```
 The height should be 5.44 um now. Remove the `magscale` line from .mag file and save the file.
 
-- `DIRECTION'
+- `DIRECTION`
 
 Select the part which contains the pin and type the following in tkcon window:
  - For Power and Ground pins:
