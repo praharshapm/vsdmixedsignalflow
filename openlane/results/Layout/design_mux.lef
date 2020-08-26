@@ -1,0 +1,140 @@
+VERSION 5.7 ;
+  NAMESCASESENSITIVE ON ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+UNITS
+  DATABASE MICRONS 200 ;
+END UNITS
+
+MACRO design_mux
+  CLASS BLOCK ;
+  FOREIGN design_mux ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 147.635 BY 158.355 ;
+  PIN CSB
+    DIRECTION INPUT ;
+    PORT
+      LAYER met2 ;
+        RECT 92.550 0.000 92.830 4.000 ;
+    END
+  END CSB
+  PIN RST
+    DIRECTION INPUT ;
+    PORT
+      LAYER met2 ;
+        RECT 124.290 154.355 124.570 158.355 ;
+    END
+  END RST
+  PIN SCK
+    DIRECTION INPUT ;
+    PORT
+      LAYER met2 ;
+        RECT 46.090 0.000 46.370 4.000 ;
+    END
+  END SCK
+  PIN SDI
+    DIRECTION INPUT ;
+    PORT
+      LAYER met2 ;
+        RECT 0.090 0.000 0.370 4.000 ;
+    END
+  END SDI
+  PIN mask_rev_in[0]
+    DIRECTION INPUT ;
+    PORT
+      LAYER met3 ;
+        RECT 143.635 123.120 147.635 123.720 ;
+    END
+  END mask_rev_in[0]
+  PIN mask_rev_in[1]
+    DIRECTION INPUT ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 136.720 4.000 137.320 ;
+    END
+  END mask_rev_in[1]
+  PIN mask_rev_in[2]
+    DIRECTION INPUT ;
+    PORT
+      LAYER met2 ;
+        RECT 31.830 154.355 32.110 158.355 ;
+    END
+  END mask_rev_in[2]
+  PIN mask_rev_in[3]
+    DIRECTION INPUT ;
+    PORT
+      LAYER met2 ;
+        RECT 138.550 0.000 138.830 4.000 ;
+    END
+  END mask_rev_in[3]
+  PIN out
+    DIRECTION OUTPUT TRISTATE ;
+    PORT
+      LAYER met3 ;
+        RECT 143.635 55.120 147.635 55.720 ;
+    END
+  END out
+  PIN select
+    DIRECTION INPUT ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 68.040 4.000 68.640 ;
+    END
+  END select
+  PIN trap
+    DIRECTION INPUT ;
+    PORT
+      LAYER met2 ;
+        RECT 78.290 154.355 78.570 158.355 ;
+    END
+  END trap
+  PIN VPWR
+    DIRECTION INPUT ;
+    USE POWER ;
+    PORT
+      LAYER met5 ;
+        RECT 5.520 13.840 141.680 15.440 ;
+    END
+  END VPWR
+  PIN VGND
+    DIRECTION INPUT ;
+    USE GROUND ;
+    PORT
+      LAYER met5 ;
+        RECT 5.520 21.340 141.680 22.940 ;
+    END
+  END VGND
+  OBS
+      LAYER li1 ;
+        RECT 5.520 10.795 141.680 146.965 ;
+      LAYER met1 ;
+        RECT 1.450 6.500 143.910 147.120 ;
+      LAYER met2 ;
+        RECT 0.370 154.075 31.550 154.770 ;
+        RECT 32.390 154.075 78.010 154.770 ;
+        RECT 78.850 154.075 124.010 154.770 ;
+        RECT 124.850 154.075 143.890 154.770 ;
+        RECT 0.370 4.280 143.890 154.075 ;
+        RECT 0.650 0.270 45.810 4.280 ;
+        RECT 46.650 0.270 92.270 4.280 ;
+        RECT 93.110 0.270 138.270 4.280 ;
+        RECT 139.110 0.270 143.890 4.280 ;
+      LAYER met3 ;
+        RECT 0.525 137.720 143.635 147.045 ;
+        RECT 4.400 136.320 143.635 137.720 ;
+        RECT 0.525 124.120 143.635 136.320 ;
+        RECT 0.525 122.720 143.235 124.120 ;
+        RECT 0.525 69.040 143.635 122.720 ;
+        RECT 4.400 67.640 143.635 69.040 ;
+        RECT 0.525 56.120 143.635 67.640 ;
+        RECT 0.525 54.720 143.235 56.120 ;
+        RECT 0.525 10.715 143.635 54.720 ;
+      LAYER met4 ;
+        RECT 8.720 10.640 137.820 147.120 ;
+      LAYER met5 ;
+        RECT 5.520 28.840 141.680 142.940 ;
+  END
+END design_mux
+END LIBRARY
+
