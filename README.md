@@ -243,10 +243,18 @@ In the `designs` directory create a folder with the name of the project
  mkdir design_mux
 ```
 ## setting up the new project
-To set-up the project, run the following on command line:
+To set-up the project, run the following :
+Go to the `~/openlane_working_dir/openlane` and execute the following:
+```javascript 
+export PDK_ROOT=<absolute path to where skywater-pdk and open_pdks reside>
+```
+```javascript 
+docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) openlane:rc2
+```
 ```javascript 
  ./flow.tcl -design design_mux -init_design_config
 ```
+<img align="center" width="500"  src="/images/bash%20shell.png">
 This will create `config.tcl` file with default settings. The final `config.tcl` file can be seen from [here](). This file also contains the reasons for some configurations as comments.
 
 The information about configuration veriables can be found [here](https://github.com/efabless/openlane/blob/master/configuration/README.md)
@@ -275,28 +283,29 @@ This line can be added using the following command in the tkcon window:
 ```
 - ` ORIGIN 0.000 0.000 `
 
-The layout must start from the origin (0,0). 
+The layout must start from the origin (0,0)
 In order to get this: 
-	- first find out the current co-ordinates of origin by:
-	  selecting the whole layout and type the following in tkcon window
-	  ```javascript 
-	  box
-	  ```
-	From this, llx and lly are X and Y co-ordinates respectively.
-	- setting X co-ordinate to 0:
-	```javascript 
-	move origin right 'llx'
-	```
-	- setting Y co-ordinate to 0:
-	```javascript 
-	move origin bottom -`lly`
-	```
-	- checking if the origin has shifted to (0,0):
-	 first find out the current co-ordinates of origin by:
-	  ```javascript 
-	  box
-	  ```
-	Now, the llx and lly should have the value of 0.
+1. first find out the current co-ordinates of origin by:
+selecting the whole layout and type the following in tkcon window
+```javascript 
+box
+```
+From this, llx and lly are X and Y co-ordinates respectively.
+2. setting X co-ordinate to 0:
+```javascript 
+move origin right 'llx'
+```
+3. setting Y co-ordinate to 0:
+```javascript 
+move origin bottom -`lly`
+```
+4. checking if the origin has shifted to (0,0):
+first find out the current co-ordinates of origin by:
+```javascript 
+box
+```
+Now, the llx and lly should have the value of 0.
+
 - `SITE unithddbl`
 
 To set this, type the following from tkcon window:
@@ -314,7 +323,7 @@ Save the magic file.
 
 Next, add the following in the .mag file:
 ```javascript 
-magscale 1 2
+magscale 10075 1000
 ```
 Reload the file in magic. Check the height of the macro now by typing the following in tkcon window:
 ```javascript 
@@ -360,6 +369,8 @@ Ultimately, after configuring all the lines for LEF, create a LEF file by typing
 ```javascript 
 lef write AMUX2_3V.lef
 ```
+
+<img align="center" width="500"  src="/images/lef.JPG">
 # The flow
 To harden a macro, the automated flow for Openlane cannot by used. Instead an interactive script should be used. 
 
@@ -393,6 +404,8 @@ run_synthesis
 ```javascript 
 init_floorplan_or
 ```
+After floorplanning, the layout can be viewed in magic using the merged LEF and DEF file produced.
+<img align="center" width="500"  src="/images/floorplan.JPG">
 ## IO Placement
 ```javascript 
 place_io
@@ -410,6 +423,9 @@ tap_decap_or
 ```javascript 
 detailed_placement
 ```
+After final placement, the layout can be viewed in magic using merged LEF and DEF file.
+
+<img align="center" width="500"  src="/images/placement.JPG">
 ## Generation of Power Delivery Network(PDN)
 ```javascript 
 gen_pdn
@@ -418,6 +434,8 @@ gen_pdn
 ```javascript 
 run_routing
 ```
+After routing, the layout can be viewed in magic using merged LEF and DEF file.
+<img align="center" width="500"  src="/images/routing.JPG">
 ## DRC Cleaning
 ```javascript 
 run_magic_drc
@@ -426,6 +444,9 @@ run_magic_drc
 ```javascript 
 run_magic
 ```
+
+The final layout output is in the form of `design_mux.mag` 
+<img align="center" width="500"  src="/images/layout%20final.JPG">
 
 # Notes and Tips
 - You may have to update RePlace to the latest version if you wish to run placement for low instance count designs.
