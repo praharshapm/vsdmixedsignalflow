@@ -260,6 +260,8 @@ In the `designs` directory create a folder with the name of the project
  cd designs
  mkdir design_mux
 ```
+<img align="center" width="500"  src="/images/design_mux.JPG">
+
 ## setting up the new project
 To set-up the project, run the following :
 Go to the `~/openlane_working_dir/openlane` and execute the following:
