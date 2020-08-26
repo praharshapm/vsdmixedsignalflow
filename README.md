@@ -239,8 +239,8 @@ Openlane along with sky130 PDK can be downloaded and installed by following the 
 ## Adding a new project 
 In the `designs` directory create a folder with the name of the project
 ```javascript 
-  cd designs
-  mkdir design_mux
+ cd designs
+ mkdir design_mux
 ```
 ## setting up the new project
 To set-up the project, run the following on command line:
@@ -273,36 +273,38 @@ This line can be added using the following command in the tkcon window:
 ```javascript 
  property LEFclass CORE
 ```
-- `ORIGIN 0.000 0.000`
-The layout must start from the origin (0,0). In order to get this : 
+- ` ORIGIN 0.000 0.000 `
 
+The layout must start from the origin (0,0). 
+In order to get this: 
 	- first find out the current co-ordinates of origin by:
-	selecting the whole layout and type the following in tkcon window
-	
+	  selecting the whole layout and type the following in tkcon window
 	  ```javascript 
-		box
-	```
+	  box
+	  ```
 	From this, llx and lly are X and Y co-ordinates respectively.
 	- setting X co-ordinate to 0:
 	```javascript 
-		move origin right 'llx'
+	move origin right 'llx'
 	```
 	- setting Y co-ordinate to 0:
 	```javascript 
-		move origin bottom -`lly`
+	move origin bottom -`lly`
 	```
 	- checking if the origin has shifted to (0,0):
 	 first find out the current co-ordinates of origin by:
 	  ```javascript 
-		box
-	```
+	  box
+	  ```
 	Now, the llx and lly should have the value of 0.
 - `SITE unithddbl`
+
 To set this, type the following from tkcon window:
 ```javascript 
  property LEFsite unithddbl
 ```
 - `SIZE`
+
 The height of the macro must be either 2.72 um or 5.444 um in order to fit into the rails ( for fd_sc_hd) . In order to acheive this, first find the current height of the macro by selecting the entire macro and typing the following in tkcon window:
 ```javascript 
 box
@@ -321,32 +323,37 @@ box
 The height should be 5.44 um now. Remove the `magscale` line from .mag file and save the file.
 
 - `DIRECTION'
+
 Select the part which contains the pin and type the following in tkcon window:
-	- For Power and Ground pins:
+ - For Power and Ground pins:
+	
 	 ```javascript 
-             port class inout
-          ```
-	 - For Input pins:
+         port class inout
+         ```
+- For Input pins:
+	   
 	   ```javascript 
-             port class input
-          ```
-	  - For Output pins:
+           port class input
+           ```
+- For Output pins:
+
 	    ```javascript 
-             port class output
-          ```
+            port class output
+            ```
 - `USE`
+
 Select the part which contains the pin and type the following in tkcon window:
 	- Power pin:
 	  ```javascript 
-             port use power
+          port use power
           ```
 	- Ground pin:
 	  ```javascript 
-             port use ground
+          port use ground
           ```
 	- Other pins:
 	  ```javascript 
-             port use signal
+          port use signal
           ```
 	  
 Ultimately, after configuring all the lines for LEF, create a LEF file by typing the following in tkcon window:
