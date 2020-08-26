@@ -443,11 +443,15 @@ After floorplanning, the layout can be viewed in magic using the merged LEF and 
 magic -T ~/sky130A.tech lef read ~/merged.lef def read design_mux.floorplan.def
 ```
 <img align="center" width="500"  src="/images/floorplan.JPG">
+
 ### IO Placement
+
 ```javascript 
 place_io
 ```
+
 ### Placement
+
 ```javascript 
 global_placement_or
 ```
