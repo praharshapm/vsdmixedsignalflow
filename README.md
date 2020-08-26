@@ -182,12 +182,12 @@ Therefore, change the pin names in the verilog file accordingly and then obtain 
 perl verilog_to_lib.pl AMUX2_3V AMUX2_3V
 ```
 
-The modified verilog file and the LIB file can be viewed from [AMUX2_3V.v](AMUX2_3V.v) and [AMUX2_3V.lib](/LIB/AMUX2_3V.lib) directory. 
+The modified verilog file and the LIB file can be viewed from [AMUX2_3V.v](https://github.com/praharshapm/vsdmixedsignalflow/blob/master/verilog/AMUX2_3V.v) and [AMUX2_3V.lib](https://github.com/praharshapm/vsdmixedsignalflow/blob/master/LIB/AMUX2_3V.lib) directory. 
 
 # Top level verilog file
-This verilog file contains only instantiations of the macro. The file can be viewed in [AMUX2_3V_top.v](Verilog/AMUX2_3V_top.v) directory. 
+This verilog file contains only instantiations of the macro. The file can be viewed in [AMUX2_3V_top.v](https://github.com/praharshapm/vsdmixedsignalflow/blob/master/verilog/AMUX2_3V_top.v) directory. 
 
-# Experiments with Qflow
+# Experiments with Qflowhttps://github.com/praharshapm/vsdmixedsignalflow/blob/master/verilog/AMUX2_3V_top.v
 OpenROAD does not support OSU018 technology node. Therefore, the placement is done using Qflow.
 Qflow can be installed by taking help of the following repository: [VSDFLOW](https://github.com/kunalg123/vsdflow.git)
 The tutorial for the same is available  as a free course on [Udemy](https://www.udemy.com/course/vsd-a-complete-guide-to-install-open-source-eda-tools/)
@@ -273,7 +273,7 @@ docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_
  ./flow.tcl -design design_mux -init_design_config
 ```
 <img align="center" width="500"  src="/images/bash%20shell.png">
-This will create `config.tcl` file with default settings. The final `config.tcl` file can be seen from [here](). This file also contains the reasons for some configurations as comments.
+This will create `config.tcl` file with default settings. The final `config.tcl` file can be seen from [here](https://github.com/praharshapm/vsdmixedsignalflow/blob/master/openlane/config.tcl). This file also contains the reasons for some configurations as comments.
 
 The information about configuration veriables can be found [here](https://github.com/efabless/openlane/blob/master/configuration/README.md)
 
@@ -281,7 +281,7 @@ The information about configuration veriables can be found [here](https://github
 
 ### Verilog files
 The input files are to added under `~/designs/design_mux/src` directory. 
-The `src`folder consists of verilog files for the design which may be found in the `verilog` section of this repository. 
+The `src`folder consists of verilog files for the design which may be found [here](https://github.com/praharshapm/vsdmixedsignalflow/tree/master/openlane/verilog) 
 
 - `design_mux.v` is the name of the top level verilog file.
 - `AMUX2_3V.v` is the verilog file of the macro. 
@@ -408,10 +408,10 @@ A bash window will open. In the bash window, the interactive flow is executed.
 ```javascript 
  ./flow.tcl -design design_mux -interactive
 ```
-The commands to be executed are also present in a script [here]():
+
 ### Setting up flow
 
-The commands to be executed are also present in a script [here]():
+The commands to be executed are also present in a script [here](https://github.com/praharshapm/vsdmixedsignalflow/blob/master/openlane/script.tcl):
 ```javascript 
 package require openlane 0.9
 ```
@@ -430,13 +430,13 @@ add_lefs -src $lefs
 ```javascript 
 run_synthesis
 ```
-The output files can be found [here]()
+The output files can be found [here](https://github.com/praharshapm/vsdmixedsignalflow/tree/master/openlane/results/synthesis)
 ### Floorplanning
 
 ```javascript 
 init_floorplan_or
 ```
-After floorplanning, the layout can be viewed in magic using the merged LEF and DEF file produced. The DEF file can be found [here]()
+After floorplanning, the layout can be viewed in magic using the merged LEF and DEF file produced. The DEF file can be found [here](https://github.com/praharshapm/vsdmixedsignalflow/tree/master/openlane/results/floorplan)
 <img align="center" width="500"  src="/images/floorplan.JPG">
 ### IO Placement
 ```javascript 
@@ -455,7 +455,7 @@ tap_decap_or
 ```javascript 
 detailed_placement
 ```
-After final placement, the layout can be viewed in magic using merged LEF and DEF file. The DEF file can be found [here]()
+After final placement, the layout can be viewed in magic using merged LEF and DEF file. The DEF file can be found [here](https://github.com/praharshapm/vsdmixedsignalflow/tree/master/openlane/results/placement)
 
 <img align="center" width="500"  src="/images/placement.JPG">
 
@@ -470,7 +470,7 @@ gen_pdn
 ```javascript 
 run_routing
 ```
-After routing, the layout can be viewed in magic using merged LEF and DEF file. The DEF file can be found [here]()
+After routing, the layout can be viewed in magic using merged LEF and DEF file. The DEF file can be found [here](https://github.com/praharshapm/vsdmixedsignalflow/tree/master/openlane/results/routing)
 <img align="center" width="500"  src="/images/routing.JPG">
 
 ### DRC Cleaning
@@ -478,13 +478,15 @@ After routing, the layout can be viewed in magic using merged LEF and DEF file. 
 ```javascript 
 run_magic_drc
 ```
+
+The output file can be found [here](https://github.com/praharshapm/vsdmixedsignalflow/tree/master/openlane/results/DRC)
 ### Final Layout generation
 
 ```javascript 
 run_magic
 ```
 
-The final layout output is in the form of `design_mux.mag` . The files can be found [here]()
+The final layout output is in the form of `design_mux.mag` . The files can be found [here](https://github.com/praharshapm/vsdmixedsignalflow/tree/master/openlane/results/Layout)
 <img align="center" width="500"  src="/images/layout%20final.JPG">
 
 ## Notes and Tips
