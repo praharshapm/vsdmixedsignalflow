@@ -21,9 +21,27 @@ This project describes how the synthesis and placement of an analog IP, 2:1 anal
     - [setting up directories for using hard macro](#setting-up-directories-for-using-hard-macro)
     - [Running sythesis for analog multiplexer](#running-synthesis-for-analog-multiplexer)
     - [Running placement for analog multiplexer](#running-placement-for-analog-multiplexer)
+- [Experiments with Openlane and sky130])(#experiments-with-openlane-and-sky130)
+	- [Installation](#installation)
+	- [Adding a new project](#adding-a-new-project)
+	- [Setting up the new project](#setting-up-the-new-project)
+	- [Adding input files](#adding-input-files)
+		- [Verilog files](#verilog-files)
+		- [LEFs](#lefs)
+	- [The Flow](#the-flow)
+		- [Setting up flow](#setting-up-flow)
+		- [The LEF file for macro](#the-lef-file-for-macro)
+		- [Synthesis](#synthesis)
+		- [Floorplanning](#floorplanning)
+		- [IO Placement](#io-planning)
+		- [Placement](#placement)
+		- [Generation of Power Delivery Network](#generation-of-power-delivery-network-pdn)
+		- [DRC Cleaning](#drc-cleaning)
+		- [Final Layout Generation](#final-layout-generation)
+	- [Notes and Tips)(#notes-and-tips)
 - [Future Work](#future-work)
+- [Aknowledgement](#aknowledgement)
 - [Contact Information](#contact-information)
-- [References](#references)
    
 
 # Mixed Signal SoC
@@ -164,10 +182,10 @@ Therefore, change the pin names in the verilog file accordingly and then obtain 
 perl verilog_to_lib.pl AMUX2_3V AMUX2_3V
 ```
 
-The modified verilog file and the LIB file can be viewed from [AMUX2_3V.v](AMUX2_3V.v) and [AMUX2_3V.lib](AMUX2_3V.lib) directory. 
+The modified verilog file and the LIB file can be viewed from [AMUX2_3V.v](AMUX2_3V.v) and [AMUX2_3V.lib](LIB/AMUX2_3V.lib) directory. 
 
 # Top level verilog file
-This verilog file contains only instantiations of the macro. The file can be viewed in [AMUX2_3V_top.v](AMUX2_3V_top.v) directory. 
+This verilog file contains only instantiations of the macro. The file can be viewed in [AMUX2_3V_top.v](Verilog/AMUX2_3V_top.v) directory. 
 
 # Experiments with Qflow
 OpenROAD does not support OSU018 technology node. Therefore, the placement is done using Qflow.
@@ -227,7 +245,7 @@ In case of any errors,
 check the log file. If the synthesis ran correctly and the `AMUX2_3V.lef` file is correct, then placement should run successfully.
 The graywolf window must open when running placement. If it runs correctly, then the window should be as shown in the figure below.
 
-<img align="center" width="500"  src="/images/placement.JPG">
+<img align="center" width="500"  src="/images/placement_q.JPG">
 
 # Experiments with Openlane and sky130
 
@@ -375,6 +393,7 @@ lef write AMUX2_3V.lef
 
 <img align="center" width="500"  src="/images/lef.JPG">
 # The flow
+
 To harden a macro, the automated flow for Openlane cannot by used. Instead an interactive script should be used. 
 
 Go to the `~/openlane_working_dir/openlane` and execute the following:
@@ -384,36 +403,45 @@ export PDK_ROOT=<absolute path to where skywater-pdk and open_pdks reside>
 ```javascript 
 docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) openlane:rc2
 ```
-A bash window will open. In the bash window, the interactive flow is executed. The commands to be executed are also present in a script [here]():
-## Setting up flow
+A bash window will open. In the bash window, the interactive flow is executed.
+```javascript 
+ ./flow.tcl -design design_mux -interactive
+```
+The commands to be executed are also present in a script [here]():
+### Setting up flow
+
+The commands to be executed are also present in a script [here]():
 ```javascript 
 package require openlane 0.9
 ```
 ```javascript 
 prep -design design_mux -overwrite
 ```
-## The LEF file for macro must be added from the bash window
+### The LEF file for macro
 ```javascript 
 set lefs 	 [glob $::env(DESIGN_DIR)/src/lef/*.lef]
 ```
 ```javascript 
 add_lefs -src $lefs
 ```
-## Synthesis
+### Synthesis
+
 ```javascript 
 run_synthesis
 ```
-## Floorplanning
+The output files can be found [here]()
+### Floorplanning
+
 ```javascript 
 init_floorplan_or
 ```
-After floorplanning, the layout can be viewed in magic using the merged LEF and DEF file produced.
+After floorplanning, the layout can be viewed in magic using the merged LEF and DEF file produced. The DEF file can be found [here]()
 <img align="center" width="500"  src="/images/floorplan.JPG">
-## IO Placement
+### IO Placement
 ```javascript 
 place_io
 ```
-## Placement
+### Placement
 ```javascript 
 global_placement_or
 ```
@@ -426,32 +454,39 @@ tap_decap_or
 ```javascript 
 detailed_placement
 ```
-After final placement, the layout can be viewed in magic using merged LEF and DEF file.
+After final placement, the layout can be viewed in magic using merged LEF and DEF file. The DEF file can be found [here]()
 
 <img align="center" width="500"  src="/images/placement.JPG">
-## Generation of Power Delivery Network(PDN)
+
+### Generation of Power Delivery Network(PDN)
+
 ```javascript 
 gen_pdn
 ```
-## Routing
+
+### Routing
+
 ```javascript 
 run_routing
 ```
-After routing, the layout can be viewed in magic using merged LEF and DEF file.
+After routing, the layout can be viewed in magic using merged LEF and DEF file. The DEF file can be found [here]()
 <img align="center" width="500"  src="/images/routing.JPG">
-## DRC Cleaning
+
+### DRC Cleaning
+
 ```javascript 
 run_magic_drc
 ```
-## Final Layout generation
+### Final Layout generation
+
 ```javascript 
 run_magic
 ```
 
-The final layout output is in the form of `design_mux.mag` 
+The final layout output is in the form of `design_mux.mag` . The files can be found [here]()
 <img align="center" width="500"  src="/images/layout%20final.JPG">
 
-# Notes and Tips
+## Notes and Tips
 - You may have to update RePlace to the latest version if you wish to run placement for low instance count designs.
 - If, the error still persists in placement, check if following block of code in `~scripts/openroad/or_replace.tcl` is commented. If not, comment it. 
 ```javascript 
@@ -468,11 +503,15 @@ global_placement \
 	 
 
 # Future Work
-To obtain complete RTL2GDS flow for mixed signal SoC on OpenROAD using sky130 PDK.
+- To include custom LIB for macro and include timing constraints.
+- To perform PNR on macro of triple-height or more
+
+# Aknowledgement
+- Kunal Ghosh, Director, VSD Corp. Pvt. Ltd
+- Sini Mukundan, Creating .lib file from verilog
+- Openlane team, Efabless corporation
 
 # Contact Information
 - Praharsha Mahurkar, BE Electronics and Telecommunication, Maharashtra Institute of Technology, Pune, 	praharshapm@gmail.com
 - Kunal Ghosh, Director, VSD Corp. Pvt. Ltd. kunalpghosh@gmail.com
 
-# References
-- Sini Mukundan, Creating .lib file from verilog
