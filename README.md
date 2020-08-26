@@ -291,6 +291,7 @@ selecting the whole layout and type the following in tkcon window
 box
 ```
 From this, llx and lly are X and Y co-ordinates respectively.
+
 2. setting X co-ordinate to 0:
 ```javascript 
 move origin right 'llx'
@@ -334,38 +335,40 @@ The height should be 5.44 um now. Remove the `magscale` line from .mag file and 
 - `DIRECTION`
 
 Select the part which contains the pin and type the following in tkcon window:
- - For Power and Ground pins:
-	
-	 ```javascript 
-         port class inout
-         ```
-- For Input pins:
-	   
-	   ```javascript 
-           port class input
-           ```
-- For Output pins:
+1. For Power and Ground pins:
+```javascript 
+port class inout
+```
 
-	    ```javascript 
-            port class output
-            ```
+2. For Input pins:
+```javascript 
+port class input
+```
+
+3. For Output pins:
+```javascript 
+port class output
+```
+
 - `USE`
 
 Select the part which contains the pin and type the following in tkcon window:
-	- Power pin:
-	  ```javascript 
-          port use power
-          ```
-	- Ground pin:
-	  ```javascript 
-          port use ground
-          ```
-	- Other pins:
-	  ```javascript 
-          port use signal
-          ```
+1. Power pin:
+```javascript 
+port use power
+```
+
+2. Ground pin:
+```javascript 
+port use ground
+```
+
+3. Other pins:
+```javascript 
+port use signal
+```
 	  
-Ultimately, after configuring all the lines for LEF, create a LEF file by typing the following in tkcon window:
+- Ultimately, after configuring all the lines for LEF, create a LEF file by typing the following in tkcon window:
 ```javascript 
 lef write AMUX2_3V.lef
 ```
