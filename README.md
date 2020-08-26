@@ -437,6 +437,9 @@ The output files can be found [here](https://github.com/praharshapm/vsdmixedsign
 init_floorplan_or
 ```
 After floorplanning, the layout can be viewed in magic using the merged LEF and DEF file produced. The DEF file can be found [here](https://github.com/praharshapm/vsdmixedsignalflow/tree/master/openlane/results/floorplan)
+```javascript 
+magic -T ~/sky130A.tech lef read ~/merged.lef def read design_mux.floorplan.def
+```
 <img align="center" width="500"  src="/images/floorplan.JPG">
 ### IO Placement
 ```javascript 
@@ -457,6 +460,9 @@ detailed_placement
 ```
 After final placement, the layout can be viewed in magic using merged LEF and DEF file. The DEF file can be found [here](https://github.com/praharshapm/vsdmixedsignalflow/tree/master/openlane/results/placement)
 
+```javascript 
+magic -T ~/sky130A.tech lef read ~/merged.lef def read design_mux.placement.def
+```
 <img align="center" width="500"  src="/images/placement.JPG">
 
 ### Generation of Power Delivery Network(PDN)
@@ -470,7 +476,12 @@ gen_pdn
 ```javascript 
 run_routing
 ```
-After routing, the layout can be viewed in magic using merged LEF and DEF file. The DEF file can be found [here](https://github.com/praharshapm/vsdmixedsignalflow/tree/master/openlane/results/routing)
+After routing, the layout can be viewed in magic using merged LEF and DEF file. The DEF file can be found [here]
+(https://github.com/praharshapm/vsdmixedsignalflow/tree/master/openlane/results/routing)
+
+```javascript 
+magic -T ~/sky130A.tech lef read ~/merged.lef def read design_mux.def
+```
 <img align="center" width="500"  src="/images/routing.JPG">
 
 ### DRC Cleaning
@@ -480,6 +491,10 @@ run_magic_drc
 ```
 
 The output file can be found [here](https://github.com/praharshapm/vsdmixedsignalflow/tree/master/openlane/results/DRC)
+
+```javascript 
+magic -T ~/sky130A.tech design_mux.drc.mag
+```
 ### Final Layout generation
 
 ```javascript 
@@ -487,6 +502,9 @@ run_magic
 ```
 
 The final layout output is in the form of `design_mux.mag` . The files can be found [here](https://github.com/praharshapm/vsdmixedsignalflow/tree/master/openlane/results/Layout)
+```javascript 
+magic -T ~/sky130A.tech design_mux.mag
+```
 <img align="center" width="500"  src="/images/layout%20final.JPG">
 
 ## Notes and Tips
