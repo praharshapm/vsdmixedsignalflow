@@ -1,5 +1,5 @@
-# OpenROAD RTL2GDS flow for Mixed Signal SoC
-This project describes how the synthesis and placement of an analog IP, 2:1 analog multiplexer is carried out by opensource EDA tools. It also discusses the steps to modify the current IP layouts inorder to ensure its acceptance by the EDA tools. 
+# Multi-height RTL2GDS flow for Mixed Signal SoC
+This project describes how the PNR of an analog IP, 2:1 analog multiplexer is carried out by opensource EDA tools. It also discusses the steps to modify the current IP layouts inorder to ensure its acceptance by the EDA tools. 
 
 # Table of Contents
 
@@ -21,7 +21,7 @@ This project describes how the synthesis and placement of an analog IP, 2:1 anal
     - [setting up directories for using hard macro](#setting-up-directories-for-using-hard-macro)
     - [Running sythesis for analog multiplexer](#running-synthesis-for-analog-multiplexer)
     - [Running placement for analog multiplexer](#running-placement-for-analog-multiplexer)
-- [Experiments with Openlane and sky130])(#experiments-with-openlane-and-sky130)
+- [Experiments with Openlane and sky130](#experiments-with-openlane-and-sky130)
 	- [Installation](#installation)
 	- [Adding a new project](#adding-a-new-project)
 	- [Setting up the new project](#setting-up-the-new-project)
@@ -35,10 +35,10 @@ This project describes how the synthesis and placement of an analog IP, 2:1 anal
 		- [Floorplanning](#floorplanning)
 		- [IO Placement](#io-planning)
 		- [Placement](#placement)
-		- [Generation of Power Delivery Network](#generation-of-power-delivery-network-pdn)
+		- [Generation of Power Delivery Network](#generation-of-power-delivery-networkpdn)
 		- [DRC Cleaning](#drc-cleaning)
 		- [Final Layout Generation](#final-layout-generation)
-	- [Notes and Tips)(#notes-and-tips)
+	- [Notes and Tips](#notes-and-tips)
 - [Future Work](#future-work)
 - [Aknowledgement](#aknowledgement)
 - [Contact Information](#contact-information)
@@ -182,7 +182,7 @@ Therefore, change the pin names in the verilog file accordingly and then obtain 
 perl verilog_to_lib.pl AMUX2_3V AMUX2_3V
 ```
 
-The modified verilog file and the LIB file can be viewed from [AMUX2_3V.v](AMUX2_3V.v) and [AMUX2_3V.lib](LIB/AMUX2_3V.lib) directory. 
+The modified verilog file and the LIB file can be viewed from [AMUX2_3V.v](AMUX2_3V.v) and [AMUX2_3V.lib](/LIB/AMUX2_3V.lib) directory. 
 
 # Top level verilog file
 This verilog file contains only instantiations of the macro. The file can be viewed in [AMUX2_3V_top.v](Verilog/AMUX2_3V_top.v) directory. 
@@ -312,11 +312,11 @@ From this, llx and lly are X and Y co-ordinates respectively.
 
 2. setting X co-ordinate to 0:
 ```javascript 
-move origin right 'llx'
+move origin right 'llx' um
 ```
 3. setting Y co-ordinate to 0:
 ```javascript 
-move origin bottom -`lly`
+move origin bottom -`lly`um
 ```
 4. checking if the origin has shifted to (0,0):
 first find out the current co-ordinates of origin by:
@@ -392,6 +392,7 @@ lef write AMUX2_3V.lef
 ```
 
 <img align="center" width="500"  src="/images/lef.JPG">
+
 # The flow
 
 To harden a macro, the automated flow for Openlane cannot by used. Instead an interactive script should be used. 
