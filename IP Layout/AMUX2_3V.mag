@@ -1,0 +1,144 @@
+magic
+tech sky130A
+timestamp 1597653420
+<< nwell >>
+rect 40 40 866 241
+<< nmos >>
+rect 171 312 191 392
+rect 362 312 382 392
+rect 715 312 735 392
+<< pmos >>
+rect 171 100 191 181
+rect 362 100 382 181
+rect 715 100 735 181
+<< ndiff >>
+rect 100 372 171 392
+rect 100 332 120 372
+rect 161 332 171 372
+rect 100 312 171 332
+rect 191 372 261 392
+rect 191 332 201 372
+rect 241 332 261 372
+rect 191 312 261 332
+rect 292 382 362 392
+rect 292 342 312 382
+rect 352 342 362 382
+rect 292 312 362 342
+rect 382 372 453 392
+rect 382 332 392 372
+rect 433 332 453 372
+rect 382 312 453 332
+rect 644 372 715 392
+rect 644 332 664 372
+rect 705 332 715 372
+rect 644 312 715 332
+rect 735 372 806 392
+rect 735 332 745 372
+rect 785 332 806 372
+rect 735 312 806 332
+<< pdiff >>
+rect 100 161 171 181
+rect 100 120 120 161
+rect 161 120 171 161
+rect 100 100 171 120
+rect 191 161 261 181
+rect 191 120 201 161
+rect 241 120 261 161
+rect 191 100 261 120
+rect 292 151 362 181
+rect 292 110 312 151
+rect 352 110 362 151
+rect 292 100 362 110
+rect 382 161 453 181
+rect 382 120 392 161
+rect 433 120 453 161
+rect 382 100 453 120
+rect 644 161 715 181
+rect 644 120 664 161
+rect 705 120 715 161
+rect 644 100 715 120
+rect 735 161 806 181
+rect 735 120 745 161
+rect 785 120 806 161
+rect 735 100 806 120
+<< ndiffc >>
+rect 120 332 161 372
+rect 201 332 241 372
+rect 312 342 352 382
+rect 392 332 433 372
+rect 664 332 705 372
+rect 745 332 785 372
+<< pdiffc >>
+rect 120 120 161 161
+rect 201 120 241 161
+rect 312 110 352 151
+rect 392 120 433 161
+rect 664 120 705 161
+rect 745 120 785 161
+<< psubdiffcont >>
+rect 312 433 352 473
+<< poly >>
+rect 171 392 191 423
+rect 362 413 735 433
+rect 362 392 382 413
+rect 715 392 735 413
+rect 171 302 191 312
+rect 171 282 292 302
+rect 171 181 191 211
+rect 362 181 382 312
+rect 453 272 675 292
+rect 715 282 735 312
+rect 654 231 675 272
+rect 654 211 735 231
+rect 715 181 735 211
+rect 171 90 191 100
+rect 362 90 382 100
+rect 171 70 382 90
+rect 715 70 735 100
+rect 362 60 382 70
+<< polycont >>
+rect 292 261 332 302
+rect 322 191 362 231
+rect 413 261 453 302
+<< locali >>
+rect 0 40 40 544
+rect 201 503 705 544
+rect 201 372 241 503
+rect 120 161 161 332
+rect 352 443 533 473
+rect 312 382 352 433
+rect 201 161 241 332
+rect 392 302 433 332
+rect 332 261 413 302
+rect 282 191 322 231
+rect 392 161 433 261
+rect 312 40 352 110
+rect 0 10 352 40
+rect 503 40 533 443
+rect 664 372 705 503
+rect 664 161 705 332
+rect 745 161 785 332
+rect 866 40 906 544
+rect 503 10 906 40
+rect 0 0 40 10
+rect 866 0 906 10
+<< labels >>
+rlabel locali 463 523 463 523 5 out
+port 6 s signal output
+rlabel locali 20 261 20 261 3 VDD
+port 2 e power bidirectional
+rlabel locali 886 272 886 272 7 VSS
+port 5 w ground bidirectional
+rlabel locali 141 261 141 261 1 I0
+port 3 n signal input
+rlabel locali 765 261 765 261 1 I1
+port 4 n signal input
+rlabel locali 302 211 302 211 1 select
+port 1 n signal input
+<< properties >>
+string LEFsite unithddbl
+string LEFclass CORE
+string LEForigin 0 0
+string LEFsymmetry X Y R90
+string LEFsource USER
+<< end >>
