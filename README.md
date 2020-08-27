@@ -71,9 +71,9 @@ The main inputs required to carry out RTL2GDS flow are:
 
 # Obtaining IP
 The analog multiplexer for OSU018 is available on the following github page: [https://github.com/prithivjp/avsdmux2x1_3v3](https://github.com/prithivjp/avsdmux2x1_3v3)
-This page includes the spice files and magic layout files. The magic file can be seen [here]()
+This page includes the spice files and magic layout files. The magic file can be seen [here](https://github.com/praharshapm/vsdmixedsignalflow/blob/master/IP%20Layout/21muxlayout.mag)
 
-From this, build a layout using sky130.tech using the Magic Layout Tool. The modified layout can he seen [here]()  
+From this, build a layout using sky130.tech using the Magic Layout Tool. The modified layout can he seen [here](https://github.com/praharshapm/vsdmixedsignalflow/blob/master/IP%20Layout/AMUX2_3V.mag)  
 
 
 # Obtaining verilog files
@@ -90,13 +90,13 @@ git clone https://github.com/efabless/raven-picorv32.git
 The LEF file can be obtained from magic layout synthesis tool from mag file . 
 
 
-The IP uses sky130 as the technology node. So it is essential that the tech file for sky130 is downloaded in the machine. The tech file is present in this repository as [sky130.tech](https://github.com/praharshapm/vsdmixedsignalflow/blob/master/openlane/sky130A.tech).
+The IP uses sky130 as the technology node. So it is essential that the tech file for sky130 is downloaded in the machine. The tech file is present in this repository as [sky130.tech](https://github.com/praharshapm/vsdmixedsignalflow/blob/master/sky130A.tech).
 
 From the terminal type the following :
 
 ```javascript 
 
-magic -T `/sky130.tech ~/AMUX2_3V.mag
+magic -T `/sky130A.tech ~/AMUX2_3V.mag
 ```
 <img align="center" width="500"  src="/images/21muxlayout.png">
 
@@ -156,7 +156,7 @@ To convert the labels into pins, a command called `port` can be used in magic.
   ```
 - Continue the same process for turning a label into port as mentioned above.
 
-<img align="center" width="500"  src="/images/select%20pin.png">
+<img align="center" width="500"  src="/images/AMUX2_3V.png">
 
 Now, dump out the LEF file again by using 
 ```javascript 
@@ -279,12 +279,12 @@ Therefore, change the pin names in the verilog file accordingly and then obtain 
 perl verilog_to_lib.pl AMUX2_3V AMUX2_3V
 ```
 
-The modified verilog file and the LIB file can be viewed from [AMUX2_3V.v](https://github.com/praharshapm/vsdmixedsignalflow/blob/master/verilog/AMUX2_3V.v) and [AMUX2_3V.lib](https://github.com/praharshapm/vsdmixedsignalflow/blob/master/LIB/AMUX2_3V.lib) directory. 
+The modified verilog file and the LIB file can be viewed from [AMUX2_3V.v](https://github.com/praharshapm/vsdmixedsignalflow/blob/master/Verilog/AMUX2_3V.v) and [AMUX2_3V.lib](https://github.com/praharshapm/vsdmixedsignalflow/blob/master/LIB/AMUX2_3V.lib) directory. 
 
 # Verilog files
-- The top level verilog file [design_mux.v]() contains instantiation of the AMUX2_3V macro and other circuitry.
-- [AMUX2_3V.v]() is the verilog file for AMUX2_3V macro.
-- [raven_spi.v] and [spi_slave.v]() are the files to be included for the design. They can be obtained from [this](https://github.com/kunalg123/icc2_workshop_collaterals) repository 
+- The top level verilog file [design_mux.v](https://github.com/praharshapm/vsdmixedsignalflow/blob/master/Verilog/design_mux.v) contains instantiation of the AMUX2_3V macro and other circuitry.
+- [AMUX2_3V.v]((https://github.com/praharshapm/vsdmixedsignalflow/blob/master/Verilog/AMUX2_3V.v) is the verilog file for AMUX2_3V macro.
+- [raven_spi.v](https://github.com/praharshapm/vsdmixedsignalflow/blob/master/Verilog/raven_spi.v) and [spi_slave.v](https://github.com/praharshapm/vsdmixedsignalflow/blob/master/Verilog/spi_slave.v) are the files to be included for the design. They can be obtained from [this](https://github.com/kunalg123/icc2_workshop_collaterals) repository 
 
 # Experiments with Openlane and sky130
 
@@ -465,7 +465,7 @@ global_placement \
 
 # Aknowledgement
 - Kunal Ghosh, Director, VSD Corp. Pvt. Ltd
-- Nickson Jose, 
+- Nickson Jose, VLSI Engineer
 - Openlane team, Efabless corporation
 
 # Contact Information
