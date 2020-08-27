@@ -37,7 +37,7 @@ This project describes how the PNR of an analog IP, 2:1 analog multiplexer is ca
 		- [Final Layout Generation](#final-layout-generation)
 	- [Notes and Tips](#notes-and-tips)
 - [Future Work](#future-work)
-- [Aknowledgement](#aknowledgement)
+- [Acknowledgement](#acknowledgement)
 - [Contact Information](#contact-information)
    
 
@@ -462,7 +462,7 @@ global_placement \
 - To include custom LIB for macro and include timing constraints.
 - To perform PNR on macro of triple-height or more
 
-# Aknowledgement
+# Acknowledgement
 - Kunal Ghosh, Director, VSD Corp. Pvt. Ltd
 - Nickson Jose, VLSI Engineer
 - Openlane team, Efabless corporation
