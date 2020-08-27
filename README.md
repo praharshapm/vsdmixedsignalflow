@@ -142,15 +142,14 @@ To convert the labels into pins, a command called `port` can be used in magic.
 <img align="center" width="500"  src="/images/polysilicon.png">
 
 - Type `g` to enable the grid option
-- delete the label on `polysilicon` layer by selecting the area where label is present and typing the following in tkcon window
+- delete the label on `poly` layer by selecting the area where label is present and typing the following in tkcon window
    ```javascript 
   erase labels
   ```
-- Connect a `polycontact` layer on the `polysilicon` on one side
-- To the `polycontact`, connect a `metal1` layer . 
-- Overlap the `metal1` layer with `m1p`.
+- Connect a `polycont` layer on the `poly` on one side
+- To the `polycont`, connect a `locali` layer . 
 - Remove DRC errors if any.
-- Create a label on `metal1` layer , by selecting a point on the layer and in tkcon window, typing
+- Create a label on `locali` layer , by selecting a point on the layer and in tkcon window, typing
   ```javascript 
   label 'name_of_label'
   ```
