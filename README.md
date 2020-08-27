@@ -466,6 +466,7 @@ global_placement \
 - Kunal Ghosh, Director, VSD Corp. Pvt. Ltd
 - Nickson Jose, VLSI Engineer
 - Openlane team, Efabless corporation
+- Prithivi Raj K, National Institute of Technology Tiruchirapalli
 
 # Contact Information
 - Praharsha Mahurkar, BE Electronics and Telecommunication, Maharashtra Institute of Technology, Pune, 	praharshapm@gmail.com
