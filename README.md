@@ -463,12 +463,12 @@ global_placement \
 - To perform PNR on macro of triple-height or more
 
 # Acknowledgement
-- Kunal Ghosh, Director, VSD Corp. Pvt. Ltd
+- Kunal Ghosh, Co-founder, VSD Corp. Pvt. Ltd
 - Nickson Jose, VLSI Engineer
 - Openlane team, Efabless corporation
 - Prithivi Raj K, National Institute of Technology Tiruchirapalli
 
 # Contact Information
 - Praharsha Mahurkar, BE Electronics and Telecommunication, Maharashtra Institute of Technology, Pune, 	praharshapm@gmail.com
-- Kunal Ghosh, Director, VSD Corp. Pvt. Ltd. kunalpghosh@gmail.com
+- Kunal Ghosh, Co-founder, VSD Corp. Pvt. Ltd. kunalpghosh@gmail.com
 
