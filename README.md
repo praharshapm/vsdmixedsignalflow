@@ -224,6 +224,11 @@ The height of the macro must be either 2.72 um or 5.444 um in order to fit into 
 
 <img align="center" width="500"  src="/images/macro%20height.JPG">
 
+This can be achieved by fixing a bounding box of 5.44 um.
+```javascript 
+property FIXED_BBOX {0 24 874 568}
+```
+
 - `DIRECTION`
 
 Select the part which contains the pin and type the following in tkcon window:
