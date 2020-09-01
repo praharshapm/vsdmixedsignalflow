@@ -221,6 +221,7 @@ To set this, type the following from tkcon window:
 - `SIZE`
 
 The height of the macro must be either 2.72 um or 5.444 um in order to fit into the rails ( for fd_sc_hd) . In order to acheive this, change the dimensions of layout in magic. 
+
 <img align="center" width="500"  src="/images/macro%20height.JPG">
 
 - `DIRECTION`
