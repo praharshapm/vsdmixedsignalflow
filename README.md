@@ -73,7 +73,14 @@ The main inputs required to carry out RTL2GDS flow are:
 The analog multiplexer for OSU018 is available on the following github page: [https://github.com/prithivjp/avsdmux2x1_3v3](https://github.com/prithivjp/avsdmux2x1_3v3)
 This page includes the spice files and magic layout files. The magic file can be seen [here](https://github.com/praharshapm/vsdmixedsignalflow/blob/master/IP%20Layout/21muxlayout.mag)
 
-From this, build a layout using sky130.tech using the Magic Layout Tool. The modified layout can he seen [here](https://github.com/praharshapm/vsdmixedsignalflow/blob/master/IP%20Layout/AMUX2_3V.mag)  
+From this, build a layout using sky130.tech using the Magic Layout Tool. The modified layout can he seen [here](https://github.com/praharshapm/vsdmixedsignalflow/blob/master/IP%20Layout/AMUX2_3V.mag) 
+
+## Tips for IP design using sky130 technology
+- According to the height of the macro, the number of supply nets (power and ground) must be changed. For example, for dual height macro, there must be 3 supply nets( VDD-VSS-VDD). This is because it would be placed between standard cells and the power and ground net connectivity would be lost.
+- The supply nets must be horizontal for them to fit into the rails.
+- The size of the supply nets are fixed as shown below. The dimensions must be followed. 
+
+- The top level cell does not include the whole layout. 
 
 
 # Obtaining verilog files
@@ -199,30 +206,15 @@ box
 ```
 Now, the llx and lly should have the value of 0.
 
-- `SITE unithddbl`
+- `SITE unithd`
 
 To set this, type the following from tkcon window:
 ```javascript 
- property LEFsite unithddbl
+ property LEFsite unithd
 ```
 - `SIZE`
 
-The height of the macro must be either 2.72 um or 5.444 um in order to fit into the rails ( for fd_sc_hd) . In order to acheive this, first find the current height of the macro by selecting the entire macro and typing the following in tkcon window:
-```javascript 
-box
-```
-Then, find the value by which it should be scaled to get height=5.44 um.
-Save the magic file.
-
-Next, add the following in the .mag file:
-```javascript 
-magscale 10075 1000
-```
-Reload the file in magic. Check the height of the macro now by typing the following in tkcon window:
-```javascript 
-box
-```
-The height should be 5.44 um now. Remove the `magscale` line from .mag file and save the file.
+The height of the macro must be either 2.72 um or 5.444 um in order to fit into the rails ( for fd_sc_hd) . In order to acheive this, change the dimensions in layout file. 
 
 - `DIRECTION`
 
