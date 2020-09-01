@@ -20,8 +20,8 @@ module design_mux (CSB,
  input [3:0] mask_rev_in;
 
  AMUX2_3V AMUX2_3V (.select(select),
-    .I1(\raven_spi.reset ),
-    .out(out));
+    .out(out),
+    .I1(\raven_spi.reset ));
  sky130_fd_sc_hd__inv_8 _139_ (.A(SCK),
     .Y(_039_));
  sky130_fd_sc_hd__inv_8 _140_ (.A(CSB),
