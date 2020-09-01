@@ -72,15 +72,22 @@ The main inputs required to carry out RTL2GDS flow are:
 # Obtaining IP
 The analog multiplexer for OSU018 is available on the following github page: [https://github.com/prithivjp/avsdmux2x1_3v3](https://github.com/prithivjp/avsdmux2x1_3v3)
 This page includes the spice files and magic layout files. The magic file can be seen [here](https://github.com/praharshapm/vsdmixedsignalflow/blob/master/IP%20Layout/21muxlayout.mag)
+<img align="center" width="500"  src="/images/21muxlayout.png">
 
-From this, build a layout using sky130.tech using the Magic Layout Tool. The modified layout can he seen [here](https://github.com/praharshapm/vsdmixedsignalflow/blob/master/IP%20Layout/AMUX2_3V.mag) 
+From this, build a layout using sky130.tech using the Magic Layout Tool. The modified layout can he seen [here](https://github.com/praharshapm/vsdmixedsignalflow/blob/master/IP%20Layout/AMUX2_3V.mag)
+
+<img align="center" width="500"  src="/images/AMUX2_3V.png">
+
 
 ## Tips for IP design using sky130 technology
 - According to the height of the macro, the number of supply nets (power and ground) must be changed. For example, for dual height macro, there must be 3 supply nets( VDD-VSS-VDD). This is because it would be placed between standard cells and the power and ground net connectivity would be lost.
 - The supply nets must be horizontal for them to fit into the rails.
 - The size of the supply nets are fixed as shown below. The dimensions must be followed. 
 
+<img align="center" width="500"  src="/images/power%20dimensions.JPG">
+
 - The top level cell does not include the whole layout. 
+<img align="center" width="500"  src="/images/macro%20height.JPG">
 
 
 # Obtaining verilog files
@@ -105,7 +112,7 @@ From the terminal type the following :
 
 magic -T `/sky130A.tech ~/AMUX2_3V.mag
 ```
-<img align="center" width="500"  src="/images/21muxlayout.png">
+
 
 A layout window and a tkcon window will open. In the tkcon window, type the following command to dump out the LEF file
 
@@ -127,7 +134,7 @@ To convert the labels into pins, a command called `port` can be used in magic.
 ## For the labels on metal layers:
 - Select the area under which the label is present. 
 
-<img align="center" width="500"  src="/images/selecting%20VDD.png">
+<img align="center" width="500"  src="/images/vdd_select.png">
 
 - In the tkcon window type 
   ```javascript 
@@ -145,9 +152,6 @@ To convert the labels into pins, a command called `port` can be used in magic.
 
 ## For the labels on polysilicon layers:
 
-
-<img align="center" width="500"  src="/images/polysilicon.png">
-
 - Type `g` to enable the grid option
 - delete the label on `poly` layer by selecting the area where label is present and typing the following in tkcon window
    ```javascript 
@@ -162,7 +166,7 @@ To convert the labels into pins, a command called `port` can be used in magic.
   ```
 - Continue the same process for turning a label into port as mentioned above.
 
-<img align="center" width="500"  src="/images/AMUX2_3V.png">
+<img align="center" width="500"  src="/images/select%20zoomed.png">
 
 Now, dump out the LEF file again by using 
 ```javascript 
@@ -214,7 +218,8 @@ To set this, type the following from tkcon window:
 ```
 - `SIZE`
 
-The height of the macro must be either 2.72 um or 5.444 um in order to fit into the rails ( for fd_sc_hd) . In order to acheive this, change the dimensions in layout file. 
+The height of the macro must be either 2.72 um or 5.444 um in order to fit into the rails ( for fd_sc_hd) . In order to acheive this, change the dimensions of layout in magic. 
+<img align="center" width="500"  src="/images/macro%20height.JPG">
 
 - `DIRECTION`
 
@@ -257,7 +262,7 @@ port use signal
 lef write AMUX2_3V.lef
 ```
 
-<img align="center" width="500"  src="/images/lef.JPG">
+<img align="center" width="500"  src="/images/Capturetkcon%20window.JPG">
 
 # Writing LIB file
 LIB file can be got by using a perl script, which converts verilog file to LIB file. The script is taken from the website [VLSI Professional Network](https://vlsi.pro/creating-lib-file-from-verilog/).
