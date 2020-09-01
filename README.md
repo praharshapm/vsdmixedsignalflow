@@ -1,5 +1,5 @@
 # Multi-height RTL2GDS flow for Mixed Signal SoC
-This project describes how the PNR of an analog IP, 2:1 analog multiplexer is carried out by opensource EDA tools. It also discusses the steps to modify the current IP layouts inorder to ensure its acceptance by the EDA tools. 
+This project describes how the PNR of an analog IP, 2:1 analog multiplexer is carried out by opensource EDA tools, Openlane. It also discusses the steps to modify the current IP layouts inorder to ensure its acceptance by the EDA tools. 
 
 # Table of Contents
 
@@ -9,6 +9,7 @@ This project describes how the PNR of an analog IP, 2:1 analog multiplexer is ca
 - [OpenROAD tools installation](#openroad-tools-installation)
 - [Inputs required for physical design](#inputs-required-for-physical-design)
 - [Obtaining IP](#obtaining-ip)
+	- [Tips for IP design using sky130 technology](#tips-for-ip-design-using-sky130-technology)
 - [Obtaining verilog files](#obtaining-verilog-files)
 - [Getting LEF file](#getting-lef-file)
 - [Limitations of current IP layouts](#limitations-of-current-ip-layouts)
@@ -71,7 +72,8 @@ The main inputs required to carry out RTL2GDS flow are:
 
 # Obtaining IP
 The analog multiplexer for OSU018 is available on the following github page: [https://github.com/prithivjp/avsdmux2x1_3v3](https://github.com/prithivjp/avsdmux2x1_3v3)
-This page includes the spice files and magic layout files. The magic file can be seen [here](https://github.com/praharshapm/vsdmixedsignalflow/blob/master/IP%20Layout/21muxlayout.mag)
+This page includes the spice files and magic layout files. The magic file can be seen [here] (https://github.com/praharshapm/vsdmixedsignalflow/blob/master/IP%20Layout/21muxlayout.mag)
+
 <img align="center" width="500"  src="/images/21muxlayout.png">
 
 From this, build a layout using sky130.tech using the Magic Layout Tool. The modified layout can he seen [here](https://github.com/praharshapm/vsdmixedsignalflow/blob/master/IP%20Layout/AMUX2_3V.mag)
