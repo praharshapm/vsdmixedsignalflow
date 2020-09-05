@@ -469,8 +469,10 @@ global_placement \
 
 # Acknowledgement
 - Kunal Ghosh, Co-founder, VSD Corp. Pvt. Ltd
-- Nickson Jose, VLSI Engineer
 - Openlane team, Efabless corporation
+- Tim Edwards, Senior Vice President of Analog and Design at efabless corporation
+- Nickson Jose, VLSI Engineer
+
 - Prithivi Raj K, National Institute of Technology Tiruchirapalli
 
 # Contact Information
