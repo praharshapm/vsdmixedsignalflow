@@ -212,11 +212,11 @@ box
 ```
 Now, the llx and lly should have the value of 0.
 
-- `SITE unithd`
+- `SITE unithddbl`
 
 To set this, type the following from tkcon window:
 ```javascript 
- property LEFsite unithd
+ property LEFsite unithddbl
 ```
 - `SIZE`
 
