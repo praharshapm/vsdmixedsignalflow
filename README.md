@@ -422,8 +422,8 @@ gen_pdn
 ```javascript 
 run_routing
 ```
-After routing, the layout can be viewed in magic using merged LEF and DEF file. The DEF file can be found [here]
-(https://github.com/praharshapm/vsdmixedsignalflow/tree/master/openlane/results/routing)
+After routing, the layout can be viewed in magic using merged LEF and DEF file. The DEF file can be found 
+[here](https://github.com/praharshapm/vsdmixedsignalflow/tree/master/openlane/results/routing)
 
 ```javascript 
 magic -T ~/sky130A.tech lef read ~/merged.lef def read design_mux.def
